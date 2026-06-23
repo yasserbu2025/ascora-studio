@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ascora Studio — Premium Digital Experiences</title>
-<meta name="description" content="Ascora Studio designs and engineers premium digital experiences for the businesses shaping tomorrow.">
+<title>Ascora Studio — Premium Websites & Digital Experiences</title>
+<meta name="description" content="Ascora Studio designs premium websites and digital experiences that help businesses stand out, build trust, and attract more customers.">
+<meta property="og:title" content="Ascora Studio — Websites That Businesses Remember">
+<meta property="og:description" content="Premium websites and digital experiences designed to help businesses stand out, build trust, and attract more customers.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +24,132 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 @media (max-width:767px){.asc-deskonly{display:none!important}}
 @keyframes asc-spin{to{transform:rotate(360deg)}}
 @keyframes asc-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ===== shared button ===== */
+.asc-btn{display:inline-flex;align-items:center;gap:12px;padding:17px 36px;border-radius:100px;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-decoration:none;cursor:pointer;border:none;transition:transform .35s,box-shadow .4s,background .3s,color .3s}
+.asc-btn-primary{background:#4d7cff;color:#050507;box-shadow:0 0 0 1px rgba(255,255,255,0.08),0 18px 60px -12px rgba(77,124,255,0.7)}
+.asc-btn-primary:hover{box-shadow:0 0 0 1px rgba(255,255,255,0.14),0 22px 70px -10px rgba(77,124,255,0.85)}
+.asc-btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(159,182,255,0.4)}
+.asc-btn-ghost:hover{box-shadow:inset 0 0 0 1px rgba(159,182,255,0.9);background:rgba(159,182,255,0.06)}
+
+/* ===== content area (below the 3D experience) ===== */
+#asc-content{position:relative;z-index:12;background:#050507}
+.asc-section{position:relative;max-width:1180px;margin:0 auto;padding:clamp(80px,12vh,150px) clamp(22px,5vw,64px)}
+.asc-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.34em;color:#7e93c9;margin-bottom:22px;text-transform:uppercase}
+.asc-h2{font-weight:500;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.04;letter-spacing:-0.025em;max-width:20ch}
+.asc-lead{margin-top:26px;max-width:54ch;font-size:clamp(15px,1.5vw,19px);line-height:1.65;color:#9aa0ad}
+.asc-accent{color:#9fb6ff}
+.asc-divline{height:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(77,124,255,0.35),transparent)}
+
+.asc-grid{display:grid;gap:clamp(14px,1.6vw,22px);margin-top:clamp(40px,6vh,68px)}
+.asc-grid-3{grid-template-columns:repeat(3,1fr)}
+.asc-grid-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.asc-grid-3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.asc-grid-3,.asc-grid-2{grid-template-columns:1fr}}
+
+.asc-card{position:relative;padding:clamp(24px,2.4vw,34px);border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.08);transition:transform .4s,border-color .4s,background .4s,box-shadow .4s;overflow:hidden}
+.asc-card:hover{transform:translateY(-5px);border-color:rgba(77,124,255,0.45);background:rgba(77,124,255,0.05);box-shadow:0 26px 60px -28px rgba(77,124,255,0.55)}
+.asc-card-ix{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#4d7cff;margin-bottom:18px}
+.asc-card h3{font-weight:600;font-size:clamp(1.05rem,1.5vw,1.35rem);letter-spacing:-0.01em;margin-bottom:11px}
+.asc-card p{font-size:14.5px;line-height:1.6;color:#9aa0ad}
+
+/* services list */
+.asc-serv{display:flex;flex-direction:column;margin-top:clamp(34px,5vh,58px);border-top:1px solid rgba(255,255,255,0.08)}
+.asc-serv-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(22px,2.6vw,32px) 6px;border-bottom:1px solid rgba(255,255,255,0.08);transition:padding-left .4s,background .4s}
+.asc-serv-row:hover{padding-left:20px;background:rgba(77,124,255,0.04)}
+.asc-serv-row .num{font-family:'Space Mono',monospace;font-size:12px;color:#4d7cff;width:42px;flex:none}
+.asc-serv-row .name{font-weight:500;font-size:clamp(1.25rem,2.8vw,2rem);letter-spacing:-0.02em;flex:1}
+.asc-serv-row .out{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#5d6470;text-align:right;max-width:24ch}
+@media (max-width:620px){.asc-serv-row .out{display:none}}
+
+/* industries */
+.asc-ind{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(40px,6vh,68px)}
+@media (max-width:900px){.asc-ind{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.asc-ind{grid-template-columns:1fr}}
+.asc-ind-card{padding:clamp(22px,2.2vw,30px);border-radius:16px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.08);transition:transform .4s,border-color .4s,background .4s}
+.asc-ind-card:hover{transform:translateY(-4px);border-color:rgba(77,124,255,0.4);background:rgba(77,124,255,0.05)}
+.asc-ind-card .lab{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#5d6470;margin-bottom:14px}
+.asc-ind-card h3{font-weight:600;font-size:1.18rem;margin-bottom:10px;letter-spacing:-0.01em}
+.asc-ind-card p{font-size:14px;line-height:1.55;color:#9aa0ad}
+
+/* portfolio concepts */
+.asc-port{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(40px,6vh,68px)}
+@media (max-width:720px){.asc-port{grid-template-columns:1fr}}
+.asc-port-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);transition:transform .4s,border-color .4s,box-shadow .4s}
+.asc-port-card:hover{transform:translateY(-6px);border-color:rgba(77,124,255,0.45);box-shadow:0 30px 70px -30px rgba(77,124,255,0.5)}
+.asc-port-thumb{height:clamp(180px,24vw,260px);position:relative;display:flex;align-items:flex-end;padding:22px}
+.asc-port-thumb .mock{position:absolute;inset:0;opacity:0.9}
+.asc-port-thumb .tag{position:relative;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.24em;color:rgba(255,255,255,0.92);background:rgba(5,5,7,0.5);backdrop-filter:blur(4px);padding:7px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.16)}
+.asc-port-body{padding:22px clamp(20px,2vw,28px) 26px}
+.asc-port-body h3{font-weight:600;font-size:1.25rem;letter-spacing:-0.01em;margin-bottom:8px}
+.asc-port-body p{font-size:14px;line-height:1.55;color:#9aa0ad}
+
+/* standards */
+.asc-std{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:clamp(40px,6vh,68px);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden}
+@media (max-width:760px){.asc-std{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.asc-std{grid-template-columns:1fr}}
+.asc-std-cell{background:#080a11;padding:clamp(26px,3vw,38px);display:flex;flex-direction:column;gap:14px;transition:background .4s}
+.asc-std-cell:hover{background:#0b0f1b}
+.asc-std-cell .dot{width:11px;height:11px;border:1.5px solid #4d7cff;transform:rotate(45deg)}
+.asc-std-cell span{font-weight:500;font-size:clamp(1.05rem,1.6vw,1.3rem);letter-spacing:-0.01em}
+
+/* about */
+.asc-about{margin-top:clamp(26px,4vh,40px);font-size:clamp(16px,1.7vw,21px);line-height:1.7;color:#c3c8d4;max-width:62ch}
+.asc-about strong{color:#fff;font-weight:600}
+
+/* final cta band */
+.asc-final-band{position:relative;text-align:center;padding:clamp(90px,15vh,180px) clamp(22px,6vw,64px);overflow:hidden}
+.asc-final-band .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,120vw);height:min(900px,120vw);background:radial-gradient(circle,rgba(77,124,255,0.18),transparent 60%);pointer-events:none}
+.asc-final-band h2{position:relative;font-weight:500;font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.02;letter-spacing:-0.03em;max-width:18ch;margin:0 auto}
+.asc-final-band p{position:relative;margin:28px auto 0;max-width:50ch;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#9aa0ad}
+
+/* footer */
+.asc-footer{border-top:1px solid rgba(255,255,255,0.08);padding:clamp(48px,7vh,80px) clamp(22px,5vw,64px) 60px}
+.asc-footer-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start}
+.asc-footer .brand{display:flex;align-items:center;gap:12px}
+.asc-footer .brand .dia{width:13px;height:13px;border:1.5px solid #fff;transform:rotate(45deg)}
+.asc-footer .brand span{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.32em;font-size:13px}
+.asc-footer .tag{margin-top:16px;font-size:14px;color:#7a808d;max-width:34ch;line-height:1.6}
+.asc-foot-links{display:flex;gap:clamp(28px,4vw,64px);flex-wrap:wrap}
+.asc-foot-col h4{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.24em;color:#5d6470;margin-bottom:16px}
+.asc-foot-col a{display:block;color:#aeb4c0;text-decoration:none;font-size:14px;margin-bottom:11px;cursor:pointer;transition:color .25s}
+.asc-foot-col a:hover{color:#fff}
+.asc-foot-base{max-width:1180px;margin:48px auto 0;padding-top:26px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#5d6470}
+
+/* ===== inquiry modal ===== */
+#asc-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:clamp(14px,3vw,40px);cursor:auto}
+#asc-modal .backdrop{position:absolute;inset:0;background:rgba(3,4,8,0.78);backdrop-filter:blur(8px);opacity:0;transition:opacity .3s}
+#asc-modal.open .backdrop{opacity:1}
+#asc-modal .panel{position:relative;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;background:linear-gradient(180deg,#0b0f1b,#070910);border:1px solid rgba(159,182,255,0.18);border-radius:22px;box-shadow:0 40px 120px -30px rgba(0,0,0,0.8),0 0 0 1px rgba(255,255,255,0.03);padding:clamp(26px,3.4vw,44px);transform:translateY(24px) scale(0.98);opacity:0;transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .35s}
+#asc-modal.open .panel{transform:translateY(0) scale(1);opacity:1}
+#asc-modal .panel::-webkit-scrollbar{width:8px}
+#asc-modal .panel::-webkit-scrollbar-thumb{background:rgba(159,182,255,0.2);border-radius:8px}
+.asc-modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);background:transparent;color:#9aa0ad;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.asc-modal-close:hover{border-color:rgba(255,255,255,0.4);color:#fff;background:rgba(255,255,255,0.05)}
+.asc-modal-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.34em;color:#7e93c9;margin-bottom:14px}
+.asc-modal-title{font-weight:500;font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.05;letter-spacing:-0.025em;margin-bottom:8px}
+.asc-modal-sub{font-size:14.5px;line-height:1.55;color:#9aa0ad;margin-bottom:26px;max-width:46ch}
+.asc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.asc-form-grid{grid-template-columns:1fr}}
+.asc-field{display:flex;flex-direction:column;gap:8px}
+.asc-field.full{grid-column:1/-1}
+.asc-field label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#8b91a0;text-transform:uppercase}
+.asc-field label .req{color:#4d7cff}
+.asc-input,.asc-select,.asc-textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:11px;padding:13px 15px;color:#f3f4f7;font-family:'Space Grotesk',sans-serif;font-size:15px;transition:border-color .25s,background .25s;outline:none}
+.asc-input::placeholder,.asc-textarea::placeholder{color:#5d6470}
+.asc-input:focus,.asc-select:focus,.asc-textarea:focus{border-color:#4d7cff;background:rgba(77,124,255,0.06)}
+.asc-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237e93c9' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:38px}
+.asc-select option{background:#0b0f1b;color:#f3f4f7}
+.asc-textarea{resize:vertical;min-height:104px;line-height:1.5}
+.asc-form-submit{grid-column:1/-1;margin-top:8px;justify-content:center;width:100%;padding:18px}
+.asc-form-submit:disabled{opacity:0.6;cursor:not-allowed}
+.asc-form-err{grid-column:1/-1;display:none;color:#ff8b7a;font-size:13px;font-family:'Space Mono',monospace;letter-spacing:0.04em}
+.asc-success{text-align:center;padding:14px 6px 6px;display:none}
+.asc-success .mark{width:74px;height:74px;border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;background:rgba(77,124,255,0.12);border:1px solid rgba(77,124,255,0.45)}
+.asc-success .mark svg{width:34px;height:34px}
+.asc-success h3{font-weight:500;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-0.02em;margin-bottom:18px}
+.asc-success p{font-size:15px;line-height:1.7;color:#9aa0ad;max-width:42ch;margin:0 auto 10px}
+.asc-success .reply{color:#9fb6ff}
 </style>
 </head>
 <body>
@@ -32,47 +161,53 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 
 <!-- NAV -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(20px,4vw,52px);mix-blend-mode:difference;">
-  <div style="display:flex;align-items:center;gap:12px;">
+  <a href="#asc-top" data-magnet style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;">
     <div style="width:13px;height:13px;border:1.5px solid #fff;transform:rotate(45deg);"></div>
     <span style="font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.32em;font-size:13px;">ASCORA</span>
-  </div>
+  </a>
   <nav style="display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;">
-    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">WORK</a>
-    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">STUDIO</a>
-    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">PROCESS</a>
-    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;" class="asc-deskonly">CONTACT</a>
+    <a href="#asc-work" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">WORK</a>
+    <a href="#asc-about" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">STUDIO</a>
+    <a href="#asc-services" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">PROCESS</a>
+    <a href="#" data-magnet data-open-form style="color:#fff;text-decoration:none;opacity:0.85;display:none;" class="asc-deskonly">CONTACT</a>
   </nav>
 </header>
 
 <!-- PROGRESS RAIL -->
-<div style="position:fixed;right:clamp(16px,2.4vw,34px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:18px;align-items:center;mix-blend-mode:difference;" class="asc-deskonly">
+<div id="asc-rail-wrap" style="position:fixed;right:clamp(16px,2.4vw,34px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:18px;align-items:center;mix-blend-mode:difference;transition:opacity .4s;" class="asc-deskonly">
   <div id="rail-0" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.95;transition:all .4s;cursor:pointer;"></div>
   <div id="rail-1" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
   <div id="rail-2" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
   <div id="rail-3" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
 </div>
 
-<!-- OVERLAYS -->
+<span id="asc-top"></span>
+
+<!-- ===== 3D OVERLAYS (unchanged scenes) ===== -->
 <main style="position:fixed;inset:0;z-index:10;pointer-events:none;">
 
   <!-- SCENE 1 HERO -->
   <section id="ov-hero" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:1;will-change:opacity,transform;">
-    <div style="font-family:'Space Mono',monospace;font-size:clamp(9px,1vw,12px);letter-spacing:0.42em;color:#7e93c9;margin-bottom:26px;">PREMIUM DIGITAL EXPERIENCES</div>
+    <div style="font-family:'Space Mono',monospace;font-size:clamp(9px,1vw,12px);letter-spacing:0.42em;color:#7e93c9;margin-bottom:26px;">PREMIUM WEBSITES &amp; DIGITAL EXPERIENCES</div>
     <h1 style="font-weight:500;font-size:clamp(2.4rem,7.4vw,7rem);line-height:0.98;letter-spacing:-0.03em;max-width:14ch;">Websites That Businesses <span style="font-style:italic;font-weight:400;color:#9fb6ff;">Remember.</span></h1>
-    <p style="margin-top:30px;max-width:46ch;font-size:clamp(13px,1.3vw,16px);line-height:1.6;color:#9aa0ad;">Ascora Studio designs and engineers digital experiences for the businesses shaping tomorrow.</p>
+    <p style="margin-top:30px;max-width:50ch;font-size:clamp(13px,1.3vw,16px);line-height:1.6;color:#9aa0ad;">Premium websites and digital experiences designed to help businesses stand out, build trust, and attract more customers.</p>
+    <div id="asc-hero-cta" style="margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+      <button class="asc-btn asc-btn-primary" data-magnet data-open-form>START YOUR PROJECT →</button>
+      <a href="#asc-work" class="asc-btn asc-btn-ghost" data-magnet>VIEW OUR WORK</a>
+    </div>
   </section>
 
-  <!-- SCENE 2 CITY -->
+  <!-- SCENE 2 CITY / INDUSTRIES -->
   <section id="ov-city" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,90px);opacity:0;will-change:opacity;">
     <div style="max-width:18ch;">
       <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.34em;color:#7e93c9;margin-bottom:22px;">02 / INDUSTRIES</div>
       <h2 style="font-weight:500;font-size:clamp(1.8rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-0.02em;">We build for every kind of business.</h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:clamp(10px,1.6vw,20px);text-align:right;font-family:'Space Mono',monospace;">
-      <div id="ind-0" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">AI Agencies</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">INTELLIGENT INTERFACES</div></div>
-      <div id="ind-1" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Construction</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">BUILT TO SCALE</div></div>
-      <div id="ind-2" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Restaurants</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">CRAFTED EXPERIENCES</div></div>
-      <div id="ind-3" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Real Estate</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">PREMIUM PROPERTY</div></div>
+      <div id="ind-0" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Construction</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">BUILT TO SCALE</div></div>
+      <div id="ind-1" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Hospitality</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">CRAFTED EXPERIENCES</div></div>
+      <div id="ind-2" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Real Estate</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">PREMIUM PROPERTY</div></div>
+      <div id="ind-3" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">AI Agencies</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">INTELLIGENT INTERFACES</div></div>
     </div>
   </section>
 
@@ -85,11 +220,8 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
   <!-- SCENE 4 FINAL -->
   <section id="ov-final" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:0;will-change:opacity;">
     <h2 style="font-weight:500;font-size:clamp(2.1rem,6.6vw,6rem);line-height:0.98;letter-spacing:-0.03em;max-width:16ch;">Your competitors have websites.<br><span style="font-style:italic;font-weight:400;color:#9fb6ff;">We build experiences.</span></h2>
-    <a href="mailto:hello@ascora.studio" data-magnet style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;gap:14px;padding:18px 38px;border-radius:100px;background:#4d7cff;color:#050507;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-decoration:none;box-shadow:0 0 0 1px rgba(255,255,255,0.08),0 18px 60px -12px rgba(77,124,255,0.7);transition:box-shadow .4s;">START YOUR PROJECT →</a>
-    <div style="margin-top:64px;display:flex;gap:clamp(20px,4vw,60px);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#5d6470;">
-      <span>ASCORA STUDIO © 2026</span>
-      <a href="mailto:hello@ascora.studio" style="pointer-events:auto;color:#5d6470;text-decoration:none;">HELLO@ASCORA.STUDIO</a>
-    </div>
+    <button id="asc-final-cta" class="asc-btn asc-btn-primary" data-magnet data-open-form style="pointer-events:auto;margin-top:44px;">START YOUR PROJECT →</button>
+    <div style="margin-top:56px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#5d6470;">SCROLL TO EXPLORE THE STUDIO ↓</div>
   </section>
 </main>
 
@@ -114,9 +246,238 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
   <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:#5d6470;">RENDERING EXPERIENCE</div>
 </div>
 
-<!-- SCROLL DRIVER -->
-<div style="height:720vh;width:1px;pointer-events:none;"></div>
+<!-- SCROLL DRIVER (3D zone) -->
+<div id="asc-driver" style="height:720vh;width:1px;pointer-events:none;"></div>
 
+<!-- ===================== CONTENT ===================== -->
+<div id="asc-content">
+
+  <!-- VALUE -->
+  <section class="asc-section">
+    <div class="asc-eyebrow">01 / WHY IT MATTERS</div>
+    <h2 class="asc-h2">Your website is your <span class="asc-accent">first impression.</span></h2>
+    <p class="asc-lead">Before customers call, visit, or request a quote, they visit your website. A premium website builds trust. A forgettable website loses opportunities.</p>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- WHY ASCORA -->
+  <section class="asc-section">
+    <div class="asc-eyebrow">02 / WHY ASCORA</div>
+    <h2 class="asc-h2">Why businesses choose Ascora</h2>
+    <div class="asc-grid asc-grid-3">
+      <div class="asc-card"><div class="asc-card-ix">01</div><h3>Premium Design</h3><p>Websites that instantly elevate your brand and set you apart from the competition.</p></div>
+      <div class="asc-card"><div class="asc-card-ix">02</div><h3>Performance</h3><p>Fast, responsive, and optimized across all devices — so you never lose a visitor.</p></div>
+      <div class="asc-card"><div class="asc-card-ix">03</div><h3>Conversion Focused</h3><p>Every layout is designed to turn visitors into enquiries, calls, and customers.</p></div>
+      <div class="asc-card"><div class="asc-card-ix">04</div><h3>Custom Experiences</h3><p>No generic templates. Every project is crafted from scratch to stand out.</p></div>
+      <div class="asc-card"><div class="asc-card-ix">05</div><h3>Modern Technology</h3><p>Built using modern technologies for performance, security, and scalability.</p></div>
+      <div class="asc-card"><div class="asc-card-ix">06</div><h3>Business Strategy</h3><p>Every design decision supports a real business goal — not just aesthetics.</p></div>
+    </div>
+    <div style="margin-top:48px;"><button class="asc-btn asc-btn-primary" data-magnet data-open-form>LET'S BUILD SOMETHING REMARKABLE →</button></div>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- SERVICES -->
+  <section id="asc-services" class="asc-section">
+    <div class="asc-eyebrow">03 / WHAT WE CREATE</div>
+    <h2 class="asc-h2">Digital experiences built around <span class="asc-accent">business outcomes.</span></h2>
+    <div class="asc-serv">
+      <div class="asc-serv-row"><span class="num">01</span><span class="name">Premium Business Websites</span><span class="out">WIN TRUST &amp; CREDIBILITY</span></div>
+      <div class="asc-serv-row"><span class="num">02</span><span class="name">Interactive Digital Experiences</span><span class="out">BE REMEMBERED</span></div>
+      <div class="asc-serv-row"><span class="num">03</span><span class="name">Website Redesigns</span><span class="out">MODERNIZE &amp; CONVERT</span></div>
+      <div class="asc-serv-row"><span class="num">04</span><span class="name">Landing Pages</span><span class="out">CAMPAIGNS THAT PERFORM</span></div>
+      <div class="asc-serv-row"><span class="num">05</span><span class="name">Modern Digital Presence</span><span class="out">STAND OUT ONLINE</span></div>
+    </div>
+    <div style="margin-top:48px;"><button class="asc-btn asc-btn-ghost" data-magnet data-open-form>ELEVATE YOUR ONLINE PRESENCE →</button></div>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- INDUSTRIES -->
+  <section class="asc-section">
+    <div class="asc-eyebrow">04 / INDUSTRIES WE SERVE</div>
+    <h2 class="asc-h2">Crafted for your industry</h2>
+    <div class="asc-ind">
+      <div class="asc-ind-card"><div class="lab">CONSTRUCTION</div><h3>Construction Companies</h3><p>Build trust before the first phone call.</p></div>
+      <div class="asc-ind-card"><div class="lab">RESTAURANTS</div><h3>Restaurants</h3><p>Create an online experience as memorable as your food.</p></div>
+      <div class="asc-ind-card"><div class="lab">HOTELS</div><h3>Hotels</h3><p>Deliver a premium first impression before guests arrive.</p></div>
+      <div class="asc-ind-card"><div class="lab">REAL ESTATE</div><h3>Real Estate</h3><p>Showcase properties with premium visual storytelling.</p></div>
+      <div class="asc-ind-card"><div class="lab">CONSULTANTS</div><h3>Consultants</h3><p>Position yourself as the obvious expert.</p></div>
+      <div class="asc-ind-card"><div class="lab">AI AGENCIES</div><h3>AI Agencies</h3><p>Present innovation through modern digital experiences.</p></div>
+    </div>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- PORTFOLIO -->
+  <section id="asc-work" class="asc-section">
+    <div class="asc-eyebrow">05 / FEATURED CONCEPTS · DESIGN EXPLORATIONS</div>
+    <h2 class="asc-h2">Selected experiences</h2>
+    <p class="asc-lead">A look at the kind of premium, conversion-focused work Ascora Studio creates — concept explorations crafted to show what's possible for your business.</p>
+    <div class="asc-port">
+      <div class="asc-port-card">
+        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#1b2440,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(77,124,255,0.35),transparent 60%);"></div><span class="tag">CONCEPT · DESIGN EXPLORATION</span></div>
+        <div class="asc-port-body"><h3>Construction Website Concept</h3><p>A bold, trust-first presence built to win larger tenders and inbound enquiries.</p></div>
+      </div>
+      <div class="asc-port-card">
+        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#3a1d18,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(255,122,89,0.32),transparent 60%);"></div><span class="tag">CONCEPT · DESIGN EXPLORATION</span></div>
+        <div class="asc-port-body"><h3>Restaurant Website Concept</h3><p>An immersive, appetite-driven experience as memorable as the food itself.</p></div>
+      </div>
+      <div class="asc-port-card">
+        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#16322a,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(35,192,138,0.3),transparent 60%);"></div><span class="tag">CONCEPT · DESIGN EXPLORATION</span></div>
+        <div class="asc-port-body"><h3>Real Estate Website Concept</h3><p>Premium property storytelling that turns browsers into serious buyers.</p></div>
+      </div>
+      <div class="asc-port-card">
+        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#241b40,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(122,92,255,0.34),transparent 60%);"></div><span class="tag">CONCEPT · DESIGN EXPLORATION</span></div>
+        <div class="asc-port-body"><h3>AI Agency Website Concept</h3><p>A forward-looking, intelligent interface that signals genuine innovation.</p></div>
+      </div>
+    </div>
+    <div style="margin-top:48px;"><button class="asc-btn asc-btn-primary" data-magnet data-open-form>BOOK A DISCOVERY CALL →</button></div>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- ABOUT -->
+  <section id="asc-about" class="asc-section">
+    <div class="asc-eyebrow">06 / ABOUT ASCORA</div>
+    <h2 class="asc-h2">A studio built for businesses that want to stand out.</h2>
+    <p class="asc-about">Ascora Studio creates premium websites and digital experiences for businesses that want to stand out online.</p>
+    <p class="asc-about">By combining <strong>strategy</strong>, <strong>design</strong>, and <strong>modern technology</strong>, we help brands create memorable digital experiences that build trust and attract customers.</p>
+  </section>
+
+  <div class="asc-divline"></div>
+
+  <!-- OUR STANDARDS -->
+  <section class="asc-section">
+    <div class="asc-eyebrow">07 / OUR STANDARDS</div>
+    <h2 class="asc-h2">The standard behind every project</h2>
+    <div class="asc-std">
+      <div class="asc-std-cell"><div class="dot"></div><span>Premium Design</span></div>
+      <div class="asc-std-cell"><div class="dot"></div><span>Business-Focused Strategy</span></div>
+      <div class="asc-std-cell"><div class="dot"></div><span>Exceptional User Experience</span></div>
+      <div class="asc-std-cell"><div class="dot"></div><span>Performance &amp; Reliability</span></div>
+      <div class="asc-std-cell"><div class="dot"></div><span>Modern Technologies</span></div>
+      <div class="asc-std-cell"><div class="dot"></div><span>Attention To Detail</span></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="asc-final-band">
+    <div class="glow"></div>
+    <h2>Your competitors have websites.<br><span class="asc-accent">Make sure yours is unforgettable.</span></h2>
+    <p>Ascora Studio helps businesses create digital experiences that leave lasting impressions and inspire trust.</p>
+    <div style="position:relative;margin-top:42px;"><button class="asc-btn asc-btn-primary" data-magnet data-open-form>START YOUR PROJECT →</button></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="asc-footer">
+    <div class="asc-footer-in">
+      <div>
+        <div class="brand"><div class="dia"></div><span>ASCORA STUDIO</span></div>
+        <p class="tag">Premium websites and digital experiences for businesses that want to be remembered.</p>
+      </div>
+      <div class="asc-foot-links">
+        <div class="asc-foot-col">
+          <h4>STUDIO</h4>
+          <a href="#asc-work">Work</a>
+          <a href="#asc-about">About</a>
+          <a href="#asc-services">Services</a>
+        </div>
+        <div class="asc-foot-col">
+          <h4>GET STARTED</h4>
+          <a data-open-form>Start Your Project</a>
+          <a data-open-form>Book a Discovery Call</a>
+          <a href="mailto:hello@ascora.studio">hello@ascora.studio</a>
+        </div>
+      </div>
+    </div>
+    <div class="asc-foot-base">
+      <span>ASCORA STUDIO © 2026</span>
+      <span>WEBSITES THAT BUSINESSES REMEMBER</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== INQUIRY MODAL ===================== -->
+<div id="asc-modal" aria-hidden="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Start your project">
+    <button class="asc-modal-close" data-close aria-label="Close">✕</button>
+
+    <div id="asc-form-wrap">
+      <div class="asc-modal-eyebrow">START YOUR PROJECT</div>
+      <h2 class="asc-modal-title">Let's build something <span class="asc-accent">remarkable.</span></h2>
+      <p class="asc-modal-sub">Tell us a little about your business. We'll review your project and reply within 24 hours.</p>
+      <form id="asc-form" class="asc-form-grid" novalidate>
+        <div class="asc-field">
+          <label>Full Name <span class="req">*</span></label>
+          <input class="asc-input" name="full_name" type="text" required autocomplete="name" placeholder="Jane Doe">
+        </div>
+        <div class="asc-field">
+          <label>Company Name</label>
+          <input class="asc-input" name="company_name" type="text" autocomplete="organization" placeholder="Your company">
+        </div>
+        <div class="asc-field">
+          <label>Business Email <span class="req">*</span></label>
+          <input class="asc-input" name="email" type="email" required autocomplete="email" placeholder="you@company.com">
+        </div>
+        <div class="asc-field">
+          <label>Phone Number</label>
+          <input class="asc-input" name="phone" type="tel" autocomplete="tel" placeholder="+49 …">
+        </div>
+        <div class="asc-field">
+          <label>Industry</label>
+          <select class="asc-select" name="industry">
+            <option value="" disabled selected>Select industry</option>
+            <option>Construction</option><option>Restaurant</option><option>Hotel</option>
+            <option>Real Estate</option><option>Consultant</option><option>AI Agency</option><option>Other</option>
+          </select>
+        </div>
+        <div class="asc-field">
+          <label>Project Type</label>
+          <select class="asc-select" name="project_type">
+            <option value="" disabled selected>Select project type</option>
+            <option>New Website</option><option>Website Redesign</option><option>Landing Page</option>
+            <option>Interactive 3D Website</option><option>Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="asc-field">
+          <label>Budget Range</label>
+          <select class="asc-select" name="budget">
+            <option value="" disabled selected>Select budget</option>
+            <option>€1,000–€2,000</option><option>€2,000–€5,000</option>
+            <option>€5,000–€10,000</option><option>€10,000+</option>
+          </select>
+        </div>
+        <div class="asc-field">
+          <label>Biggest Goal</label>
+          <select class="asc-select" name="goal">
+            <option value="" disabled selected>Select goal</option>
+            <option>Get More Customers</option><option>Build Trust</option><option>Improve Online Presence</option>
+            <option>Launch A New Business</option><option>Modernize Existing Website</option>
+          </select>
+        </div>
+        <div class="asc-field full">
+          <label>Project Details</label>
+          <textarea class="asc-textarea" name="details" placeholder="Tell us about your business and what you'd like to achieve."></textarea>
+        </div>
+        <div class="asc-form-err" id="asc-form-err"></div>
+        <button type="submit" class="asc-btn asc-btn-primary asc-form-submit" id="asc-form-submit" data-magnet>START MY PROJECT →</button>
+      </form>
+    </div>
+
+    <div class="asc-success" id="asc-success">
+      <div class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6.5" stroke="#9fb6ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Thank you for your interest in Ascora Studio.</h3>
+      <p>We've received your project request and will review it carefully.</p>
+      <p class="reply">You can expect a response within 24 hours.</p>
+      <div style="margin-top:30px;"><button class="asc-btn asc-btn-ghost" data-close>CLOSE</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 3D EXPERIENCE ===================== -->
 <script>
 (function () {
   const app = {
@@ -124,12 +485,12 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     scroll: 0, target: 0,
     mx: 0, my: 0, cmx: 0, cmy: 0,
     cur: { x: innerWidth / 2, y: innerHeight / 2, tx: innerWidth / 2, ty: innerHeight / 2 },
-    _p: 0,
-    _raf: null,
-    _snapRaf: null
+    _p: 0, _raf: null, _snapRaf: null, _inContent: false
   };
 
-  // ---- radial gradient sprite texture ----
+  // 3D zone scroll length (matches the 720vh driver, independent of appended content)
+  const zoneMax = () => Math.max(1, 7.2 * innerHeight - innerHeight);
+
   app._radial = function (c0, c1) {
     const cn = document.createElement('canvas'); cn.width = cn.height = 128;
     const g = cn.getContext('2d');
@@ -139,7 +500,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     return new THREE.CanvasTexture(cn);
   };
 
-  // ---- starfield ----
   app._buildStars = function () {
     const THREE = window.THREE, mobile = app.mobile;
     const N = mobile ? 1300 : 3400;
@@ -156,8 +516,7 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
     const mat = new THREE.PointsMaterial({
-      size: mobile ? 0.7 : 0.5,
-      map: app._radial('#ffffff', '#9fb6ff'),
+      size: mobile ? 0.7 : 0.5, map: app._radial('#ffffff', '#9fb6ff'),
       transparent: true, vertexColors: true, depthWrite: false,
       blending: THREE.AdditiveBlending, opacity: 0.9
     });
@@ -165,7 +524,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app.scene.add(app.stars);
   };
 
-  // ---- hero icosahedron ----
   app._buildHero = function () {
     const THREE = window.THREE;
     const g = new THREE.Group();
@@ -181,7 +539,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app.scene.add(g);
   };
 
-  // ---- city skyline ----
   app._buildCity = function () {
     const THREE = window.THREE, mobile = app.mobile;
     const g = new THREE.Group();
@@ -205,7 +562,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app.city = g; app.scene.add(g);
   };
 
-  // ---- browser mock textures ----
   app._siteTexture = function (idx) {
     const accents = ['#4d7cff', '#7a5cff', '#ff7a59', '#23c08a', '#ffb23e'];
     const titles = ['NEURA AI', 'ATLAS BUILD', 'SAISON', 'VANTAGE ESTATES', 'MERIDIAN'];
@@ -231,7 +587,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     const t = new THREE.CanvasTexture(cn); t.anisotropy = 4; return t;
   };
 
-  // ---- floating screen panels ----
   app._buildScreens = function () {
     const THREE = window.THREE;
     const g = new THREE.Group();
@@ -255,7 +610,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app.show = g; app.scene.add(g);
   };
 
-  // ---- void wireframe ----
   app._buildVoid = function () {
     const THREE = window.THREE;
     const wire = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(9, 1)), new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.18 }));
@@ -263,7 +617,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app.voidMesh = wire; app.scene.add(wire);
   };
 
-  // ---- custom cursor ----
   app._initCursor = function () {
     app.cursorEl = document.getElementById('asc-cursor');
     document.querySelectorAll('[data-magnet]').forEach(el => {
@@ -281,13 +634,11 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     });
   };
 
-  // ---- scroll snap ----
   app._initSnap = function () {
     app.snaps = [0.04, 0.40, 0.62, 0.94];
     app.snapIdx = 0;
     app.animating = false;
-
-    const max = () => Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - innerHeight;
+    const last = () => app.snaps.length - 1;
     const easeInOut = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
     app._tweenTo = idx => {
@@ -296,7 +647,7 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
       app.snapIdx = idx;
       app.animating = true;
       const start = window.scrollY || 0;
-      const end = app.snaps[idx] * max();
+      const end = app.snaps[idx] * zoneMax();
       const dur = 1050, t0 = performance.now();
       const step = now => {
         const p = Math.min(1, (now - t0) / dur);
@@ -309,7 +660,7 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 
     app._go = dir => { if (!app.animating) app._tweenTo(app.snapIdx + dir); };
     app._nearest = () => {
-      const f = (window.scrollY || 0) / (max() || 1);
+      const f = (window.scrollY || 0) / zoneMax();
       let bi = 0, bd = 9;
       app.snaps.forEach((s, i) => { const d = Math.abs(s - f); if (d < bd) { bd = d; bi = i; } });
       return bi;
@@ -317,26 +668,56 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 
     let wheelLock = false;
     app._onWheel = e => {
-      e.preventDefault();
-      if (app.animating || wheelLock) return;
+      if (window.__ascModalOpen) return;
+      const zmax = zoneMax(), y = window.scrollY || 0;
+      // In the content area below the experience: native scroll.
+      if (y >= zmax - 2) { app._inContent = true; return; }
+      // Re-entering the 3D zone from content while scrolling up: settle on the final scene.
+      if (e.deltaY < 0 && app._inContent) { app._inContent = false; e.preventDefault(); app._tweenTo(last()); return; }
+      app._inContent = false;
+      if (app.animating || wheelLock) { e.preventDefault(); return; }
       if (Math.abs(e.deltaY) < 8) return;
+      // At the final scene, scrolling down releases into the content.
+      if (e.deltaY > 0 && app.snapIdx >= last()) { return; }
+      e.preventDefault();
       wheelLock = true; setTimeout(() => { wheelLock = false; }, 120);
       app._go(e.deltaY > 0 ? 1 : -1);
     };
     app._onKey = e => {
+      if (window.__ascModalOpen) return;
+      const zmax = zoneMax(), y = window.scrollY || 0;
+      if (y >= zmax - 2) return; // native scroll in content
       const k = e.key;
-      if (['ArrowDown', 'PageDown', ' ', 'ArrowRight'].includes(k)) { e.preventDefault(); app._go(1); }
-      else if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(k)) { e.preventDefault(); app._go(-1); }
+      if (['ArrowDown', 'PageDown', ' ', 'ArrowRight'].includes(k)) {
+        if (app.snapIdx >= last()) return; // release downward into content
+        e.preventDefault(); app._go(1);
+      } else if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(k)) { e.preventDefault(); app._go(-1); }
       else if (k === 'Home') { e.preventDefault(); app._tweenTo(0); }
-      else if (k === 'End') { e.preventDefault(); app._tweenTo(app.snaps.length - 1); }
+      else if (k === 'End') { e.preventDefault(); app._tweenTo(last()); }
     };
     app._touchY = null;
     app._onTouchStart = e => { app._touchY = e.touches[0].clientY; };
-    app._onTouchMove = e => { e.preventDefault(); };
+    app._onTouchMove = e => {
+      if (window.__ascModalOpen) return;
+      const zmax = zoneMax(), y = window.scrollY || 0;
+      if (y >= zmax - 2) return; // allow native scroll in content
+      e.preventDefault();
+    };
     app._onTouchEnd = e => {
+      if (window.__ascModalOpen) return;
+      const zmax = zoneMax(), y = window.scrollY || 0;
+      if (y >= zmax - 2) { app._touchY = null; return; }
       if (app._touchY == null || app.animating) return;
-      const dy = app._touchY - (e.changedTouches[0] ? e.changedTouches[0].clientY : app._touchY);
-      if (Math.abs(dy) > 40) app._go(dy > 0 ? 1 : -1);
+      const endY = e.changedTouches[0] ? e.changedTouches[0].clientY : app._touchY;
+      const dy = app._touchY - endY;
+      if (Math.abs(dy) > 40) {
+        if (dy > 0 && app.snapIdx >= last()) {
+          app._inContent = true;
+          window.scrollTo({ top: zmax + 4, behavior: 'smooth' });
+        } else {
+          app._go(dy > 0 ? 1 : -1);
+        }
+      }
       app._touchY = null;
     };
 
@@ -352,7 +733,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     });
   };
 
-  // ---- camera sample along keyframes ----
   app._sample = function (t) {
     const k = app.keys; let i = 0;
     while (i < k.length - 1 && t > k[i + 1].p) i++;
@@ -372,19 +752,14 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     if (p > b) return 1 - (p - b) / e;
     return 1;
   };
-  app._set = function (id, v) {
-    const el = document.getElementById(id);
-    if (el) el.style.opacity = v.toFixed(3);
-  };
+  app._set = function (id, v) { const el = document.getElementById(id); if (el) el.style.opacity = v.toFixed(3); };
 
-  // ---- main render loop ----
   app._loop = function () {
     if (!app.alive) return;
     app._raf = requestAnimationFrame(() => app._loop());
-    const doc = document.documentElement;
-    const max = Math.max(doc.scrollHeight, document.body.scrollHeight) - innerHeight;
-    const top = window.scrollY || window.pageYOffset || document.body.scrollTop || doc.scrollTop || 0;
-    app.target = max > 0 ? top / max : 0;
+    const zmax = zoneMax();
+    const top = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    app.target = Math.max(0, Math.min(1, top / zmax));
     app.scroll += (app.target - app.scroll) * 0.075;
     const t = app.scroll;
 
@@ -401,7 +776,8 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     if (app.screens) { app.screens.forEach((o, i) => { o.g.rotation.y = o.base + Math.sin(now * 0.4 + i) * 0.18; o.g.position.y += Math.sin(now * 0.6 + i * 1.3) * 0.004; }); }
     if (app.voidMesh) { app.voidMesh.rotation.y += 0.0015; app.voidMesh.rotation.x += 0.0008; }
 
-    app._set('ov-hero', app._band(t, 0, 0.09, 0.05));
+    const heroOp = app._band(t, 0, 0.09, 0.05);
+    app._set('ov-hero', heroOp);
     const cityO = app._band(t, 0.19, 0.45, 0.05);
     app._set('ov-city', cityO);
     app._set('ind-0', Math.min(cityO, app._band(t, 0.215, 0.46, 0.03)));
@@ -409,9 +785,15 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     app._set('ind-2', Math.min(cityO, app._band(t, 0.315, 0.46, 0.03)));
     app._set('ind-3', Math.min(cityO, app._band(t, 0.365, 0.46, 0.03)));
     app._set('ov-show', app._band(t, 0.53, 0.73, 0.05));
-    app._set('ov-final', app._band(t, 0.83, 1.02, 0.05));
-    const cue = document.getElementById('asc-cue');
-    if (cue) cue.style.opacity = (t < 0.04 ? 1 : 0).toString();
+    const finalOp = app._band(t, 0.83, 1.02, 0.05);
+    app._set('ov-final', finalOp);
+
+    // keep faded overlays from intercepting clicks
+    const hc = document.getElementById('asc-hero-cta'); if (hc) hc.style.pointerEvents = heroOp > 0.5 ? 'auto' : 'none';
+    const fc = document.getElementById('asc-final-cta'); if (fc) fc.style.pointerEvents = finalOp > 0.5 ? 'auto' : 'none';
+
+    const cue = document.getElementById('asc-cue'); if (cue) cue.style.opacity = (t < 0.04 ? 1 : 0).toString();
+    const railWrap = document.getElementById('asc-rail-wrap'); if (railWrap) railWrap.style.opacity = (top >= zmax - 2 ? 0 : 1).toString();
 
     const scene = (app.snapIdx != null && app.animating) ? app.snapIdx : (app._nearest ? app._nearest() : 0);
     for (let i = 0; i < 4; i++) {
@@ -426,10 +808,10 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
       app.cursorEl.style.top = app.cur.y + 'px';
     }
 
-    app.renderer.render(app.scene, app.camera);
+    // Skip GPU work once well into the content (saves battery); resumes near the zone.
+    if (top < zmax + innerHeight) app.renderer.render(app.scene, app.camera);
   };
 
-  // ---- init THREE scene ----
   app._init = function () {
     const THREE = window.THREE;
     const cv = document.getElementById('ascora-gl');
@@ -449,11 +831,7 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     camera.position.set(0, 0, 16);
     app.camera = camera;
 
-    app._buildStars();
-    app._buildHero();
-    app._buildCity();
-    app._buildScreens();
-    app._buildVoid();
+    app._buildStars(); app._buildHero(); app._buildCity(); app._buildScreens(); app._buildVoid();
 
     app.keys = [
       { p: 0.00, pos: [0, 0, 16], look: [0, 0, 0] },
@@ -484,9 +862,7 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 
     app._initCursor();
     app._initSnap();
-
     app._tmpL = new THREE.Vector3();
-
     app._loop();
 
     setTimeout(() => {
@@ -497,7 +873,6 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
     }, 420);
   };
 
-  // ---- wait for THREE to load, then init ----
   app._waitThree = function () {
     if (!app.alive) return;
     let pct = Math.min(96, (app._p = (app._p || 0) + 9));
@@ -509,6 +884,105 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 
   app._waitThree();
 })();
+</script>
+
+<!-- ===================== UI: modal + nav + form ===================== -->
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL = 'https://phuzogcgrozzsiqdlroe.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBodXpvZ2Nncm96enNpcWRscm9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMjE4NjYsImV4cCI6MjA5Nzc5Nzg2Nn0._m5h1zpuK3u0g6AcsSMjSzORdq2KOATA0ou2ILldR1I';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false } });
+
+const modal = document.getElementById('asc-modal');
+const formWrap = document.getElementById('asc-form-wrap');
+const successEl = document.getElementById('asc-success');
+const form = document.getElementById('asc-form');
+const submitBtn = document.getElementById('asc-form-submit');
+const errEl = document.getElementById('asc-form-err');
+
+function openForm() {
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  window.__ascModalOpen = true;
+  requestAnimationFrame(() => modal.classList.add('open'));
+}
+function closeForm() {
+  modal.classList.remove('open');
+  window.__ascModalOpen = false;
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    // reset back to the form for next open
+    formWrap.style.display = '';
+    successEl.style.display = 'none';
+    errEl.style.display = 'none';
+  }, 320);
+}
+
+// open triggers (any element with data-open-form)
+document.querySelectorAll('[data-open-form]').forEach(el => {
+  el.addEventListener('click', e => { e.preventDefault(); openForm(); });
+});
+// close triggers
+modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeForm));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && window.__ascModalOpen) closeForm(); });
+
+// smooth-scroll for in-page anchors (works once scroll-lock releases)
+document.querySelectorAll('a[href^="#asc-"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errEl.style.display = 'none';
+  const fd = new FormData(form);
+  const get = k => (fd.get(k) || '').toString().trim();
+
+  const full_name = get('full_name');
+  const email = get('email');
+  if (!full_name || !email) { errEl.textContent = 'Please add your name and email.'; errEl.style.display = 'block'; return; }
+
+  const payload = {
+    full_name,
+    company_name: get('company_name') || null,
+    email,
+    phone: get('phone') || null,
+    industry: get('industry') || null,
+    project_type: get('project_type') || null,
+    budget: get('budget') || null,
+    goal: get('goal') || null,
+    details: get('details') || null
+  };
+
+  submitBtn.disabled = true;
+  const original = submitBtn.textContent;
+  submitBtn.textContent = 'SENDING…';
+
+  // NOTE: no .select() — anon may insert but not read back (RLS).
+  const { error } = await supabase.from('leads').insert(payload);
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = original;
+
+  if (error) {
+    errEl.textContent = 'Something went wrong. Please try again or email hello@ascora.studio.';
+    errEl.style.display = 'block';
+    console.error('[ascora] lead insert failed:', error);
+    return;
+  }
+
+  form.reset();
+  formWrap.style.display = 'none';
+  successEl.style.display = 'block';
+});
 </script>
 </body>
 </html>
