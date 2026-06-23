@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ascora Studio — Premium Digital Experiences</title>
+<meta name="description" content="Ascora Studio designs and engineers premium digital experiences for the businesses shaping tomorrow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html,body{background:#050507;overflow-x:clip}
+html{height:auto;overflow-y:visible}
+body{min-height:100%;overflow-y:visible}
+body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:#f3f4f7;-webkit-font-smoothing:antialiased}
+::selection{background:#4d7cff;color:#050507}
+@media (hover:hover) and (pointer:fine){body{cursor:none}}
+@media (max-width:767px){.asc-deskonly{display:none!important}}
+@keyframes asc-spin{to{transform:rotate(360deg)}}
+@keyframes asc-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+</style>
+</head>
+<body>
+
+<canvas id="ascora-gl" style="position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;"></canvas>
+
+<div style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 90% at 50% 30%,rgba(5,5,7,0) 40%,rgba(5,5,7,0.55) 100%);"></div>
+<div style="position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.05;mix-blend-mode:screen;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.6) 3px,transparent 4px);"></div>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(20px,4vw,52px);mix-blend-mode:difference;">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="width:13px;height:13px;border:1.5px solid #fff;transform:rotate(45deg);"></div>
+    <span style="font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.32em;font-size:13px;">ASCORA</span>
+  </div>
+  <nav style="display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;">
+    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">WORK</a>
+    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">STUDIO</a>
+    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;">PROCESS</a>
+    <a href="#" data-magnet style="color:#fff;text-decoration:none;opacity:0.85;" class="asc-deskonly">CONTACT</a>
+  </nav>
+</header>
+
+<!-- PROGRESS RAIL -->
+<div style="position:fixed;right:clamp(16px,2.4vw,34px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:18px;align-items:center;mix-blend-mode:difference;" class="asc-deskonly">
+  <div id="rail-0" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.95;transition:all .4s;cursor:pointer;"></div>
+  <div id="rail-1" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
+  <div id="rail-2" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
+  <div id="rail-3" style="width:7px;height:7px;border-radius:50%;background:#fff;opacity:0.28;transition:all .4s;cursor:pointer;"></div>
+</div>
+
+<!-- OVERLAYS -->
+<main style="position:fixed;inset:0;z-index:10;pointer-events:none;">
+
+  <!-- SCENE 1 HERO -->
+  <section id="ov-hero" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:1;will-change:opacity,transform;">
+    <div style="font-family:'Space Mono',monospace;font-size:clamp(9px,1vw,12px);letter-spacing:0.42em;color:#7e93c9;margin-bottom:26px;">PREMIUM DIGITAL EXPERIENCES</div>
+    <h1 style="font-weight:500;font-size:clamp(2.4rem,7.4vw,7rem);line-height:0.98;letter-spacing:-0.03em;max-width:14ch;">Websites That Businesses <span style="font-style:italic;font-weight:400;color:#9fb6ff;">Remember.</span></h1>
+    <p style="margin-top:30px;max-width:46ch;font-size:clamp(13px,1.3vw,16px);line-height:1.6;color:#9aa0ad;">Ascora Studio designs and engineers digital experiences for the businesses shaping tomorrow.</p>
+  </section>
+
+  <!-- SCENE 2 CITY -->
+  <section id="ov-city" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,90px);opacity:0;will-change:opacity;">
+    <div style="max-width:18ch;">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.34em;color:#7e93c9;margin-bottom:22px;">02 / INDUSTRIES</div>
+      <h2 style="font-weight:500;font-size:clamp(1.8rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-0.02em;">We build for every kind of business.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(10px,1.6vw,20px);text-align:right;font-family:'Space Mono',monospace;">
+      <div id="ind-0" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">AI Agencies</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">INTELLIGENT INTERFACES</div></div>
+      <div id="ind-1" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Construction</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">BUILT TO SCALE</div></div>
+      <div id="ind-2" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Restaurants</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">CRAFTED EXPERIENCES</div></div>
+      <div id="ind-3" style="opacity:0;transition:opacity .1s;"><div style="font-size:clamp(1.1rem,2.4vw,2rem);letter-spacing:0.02em;color:#fff;">Real Estate</div><div style="font-size:10px;letter-spacing:0.2em;color:#5d6470;">PREMIUM PROPERTY</div></div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 SHOWCASE -->
+  <section id="ov-show" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 24px clamp(48px,9vh,110px);opacity:0;will-change:opacity;">
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.34em;color:#7e93c9;margin-bottom:18px;">03 / SHOWCASE</div>
+    <h2 style="font-weight:500;font-size:clamp(1.9rem,5.2vw,4.4rem);line-height:1;letter-spacing:-0.025em;max-width:16ch;">Designed to impress. <span style="color:#9fb6ff;">Built to convert.</span></h2>
+  </section>
+
+  <!-- SCENE 4 FINAL -->
+  <section id="ov-final" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:0;will-change:opacity;">
+    <h2 style="font-weight:500;font-size:clamp(2.1rem,6.6vw,6rem);line-height:0.98;letter-spacing:-0.03em;max-width:16ch;">Your competitors have websites.<br><span style="font-style:italic;font-weight:400;color:#9fb6ff;">We build experiences.</span></h2>
+    <a href="mailto:hello@ascora.studio" data-magnet style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;gap:14px;padding:18px 38px;border-radius:100px;background:#4d7cff;color:#050507;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.14em;text-decoration:none;box-shadow:0 0 0 1px rgba(255,255,255,0.08),0 18px 60px -12px rgba(77,124,255,0.7);transition:box-shadow .4s;">START YOUR PROJECT →</a>
+    <div style="margin-top:64px;display:flex;gap:clamp(20px,4vw,60px);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#5d6470;">
+      <span>ASCORA STUDIO © 2026</span>
+      <a href="mailto:hello@ascora.studio" style="pointer-events:auto;color:#5d6470;text-decoration:none;">HELLO@ASCORA.STUDIO</a>
+    </div>
+  </section>
+</main>
+
+<!-- SCROLL CUE -->
+<div id="asc-cue" style="position:fixed;bottom:34px;left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:#6b7280;pointer-events:none;">
+  <span>SCROLL</span>
+  <div style="width:1px;height:34px;background:linear-gradient(#4d7cff,transparent);animation:asc-bob 1.8s ease-in-out infinite;"></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="asc-cursor" style="position:fixed;top:0;left:0;z-index:60;width:30px;height:30px;border:1px solid rgba(159,182,255,0.7);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;transition:width .25s,height .25s,background .25s,border-color .25s;mix-blend-mode:difference;"></div>
+
+<!-- PRELOADER -->
+<div id="asc-preload" style="position:fixed;inset:0;z-index:90;background:#050507;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .9s ease;">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div style="width:16px;height:16px;border:1.6px solid #4d7cff;transform:rotate(45deg);animation:asc-spin 3s linear infinite;"></div>
+    <span style="font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.42em;font-size:15px;">ASCORA STUDIO</span>
+  </div>
+  <div style="width:180px;height:1px;background:rgba(255,255,255,0.12);overflow:hidden;">
+    <div id="asc-bar" style="width:0%;height:100%;background:#4d7cff;transition:width .3s;"></div>
+  </div>
+  <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.3em;color:#5d6470;">RENDERING EXPERIENCE</div>
+</div>
+
+<!-- SCROLL DRIVER -->
+<div style="height:720vh;width:1px;pointer-events:none;"></div>
+
+<script>
+(function () {
+  const app = {
+    alive: true,
+    scroll: 0, target: 0,
+    mx: 0, my: 0, cmx: 0, cmy: 0,
+    cur: { x: innerWidth / 2, y: innerHeight / 2, tx: innerWidth / 2, ty: innerHeight / 2 },
+    _p: 0,
+    _raf: null,
+    _snapRaf: null
+  };
+
+  // ---- radial gradient sprite texture ----
+  app._radial = function (c0, c1) {
+    const cn = document.createElement('canvas'); cn.width = cn.height = 128;
+    const g = cn.getContext('2d');
+    const rg = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+    rg.addColorStop(0, c0); rg.addColorStop(0.4, c1); rg.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = rg; g.fillRect(0, 0, 128, 128);
+    return new THREE.CanvasTexture(cn);
+  };
+
+  // ---- starfield ----
+  app._buildStars = function () {
+    const THREE = window.THREE, mobile = app.mobile;
+    const N = mobile ? 1300 : 3400;
+    const pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+    const a = new THREE.Color(0x6f8dff), b = new THREE.Color(0xffffff);
+    for (let i = 0; i < N; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 240;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 110;
+      pos[i * 3 + 2] = 30 - Math.random() * 320;
+      const c = Math.random() < 0.5 ? a : b; const m = 0.5 + Math.random() * 0.5;
+      col[i * 3] = c.r * m; col[i * 3 + 1] = c.g * m; col[i * 3 + 2] = c.b * m;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const mat = new THREE.PointsMaterial({
+      size: mobile ? 0.7 : 0.5,
+      map: app._radial('#ffffff', '#9fb6ff'),
+      transparent: true, vertexColors: true, depthWrite: false,
+      blending: THREE.AdditiveBlending, opacity: 0.9
+    });
+    app.stars = new THREE.Points(geo, mat);
+    app.scene.add(app.stars);
+  };
+
+  // ---- hero icosahedron ----
+  app._buildHero = function () {
+    const THREE = window.THREE;
+    const g = new THREE.Group();
+    const ico = new THREE.IcosahedronGeometry(3.2, 1);
+    const wire = new THREE.LineSegments(new THREE.EdgesGeometry(ico), new THREE.LineBasicMaterial({ color: 0x9fb6ff, transparent: true, opacity: 0.85 }));
+    const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2.4, 0), new THREE.MeshBasicMaterial({ color: 0x0a0e1c, transparent: true, opacity: 0.92 }));
+    const inner = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.5, 0)), new THREE.LineBasicMaterial({ color: 0x4d7cff }));
+    g.add(core, wire, inner);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: app._radial('rgba(120,150,255,0.9)', 'rgba(77,124,255,0.35)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    glow.scale.set(18, 18, 1); g.add(glow);
+    g.position.set(0, 0, 0);
+    app.hero = g; app.heroInner = inner;
+    app.scene.add(g);
+  };
+
+  // ---- city skyline ----
+  app._buildCity = function () {
+    const THREE = window.THREE, mobile = app.mobile;
+    const g = new THREE.Group();
+    const grid = new THREE.GridHelper(280, 70, 0x21407f, 0x16244a);
+    grid.position.set(0, -7, -90); grid.material.transparent = true; grid.material.opacity = 0.5;
+    g.add(grid);
+    const palette = [0x4d7cff, 0x3b6bff, 0x6f9bff, 0x8a7bff];
+    const N = mobile ? 38 : 70;
+    for (let i = 0; i < N; i++) {
+      const side = Math.random() < 0.5 ? -1 : 1;
+      const x = side * (6 + Math.random() * 42);
+      const z = -22 - Math.random() * 130;
+      const w = 2 + Math.random() * 4, d = 2 + Math.random() * 4, h = 5 + Math.random() * 38;
+      const box = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial({ color: 0x070a14 }));
+      box.position.set(x, -7 + h / 2, z);
+      const beacon = Math.random() < 0.22;
+      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(box.geometry), new THREE.LineBasicMaterial({ color: palette[(Math.random() * palette.length) | 0], transparent: true, opacity: beacon ? 0.85 : 0.32 }));
+      edges.position.copy(box.position);
+      g.add(box, edges);
+    }
+    app.city = g; app.scene.add(g);
+  };
+
+  // ---- browser mock textures ----
+  app._siteTexture = function (idx) {
+    const accents = ['#4d7cff', '#7a5cff', '#ff7a59', '#23c08a', '#ffb23e'];
+    const titles = ['NEURA AI', 'ATLAS BUILD', 'SAISON', 'VANTAGE ESTATES', 'MERIDIAN'];
+    const ac = accents[idx % accents.length];
+    const cn = document.createElement('canvas'); cn.width = 900; cn.height = 600;
+    const c = cn.getContext('2d');
+    c.fillStyle = '#0c0e14'; c.fillRect(0, 0, 900, 600);
+    c.fillStyle = '#11141d'; c.fillRect(0, 0, 900, 54);
+    ['#ff5f57', '#febc2e', '#28c840'].forEach((col, i) => { c.fillStyle = col; c.beginPath(); c.arc(28 + i * 22, 27, 6, 0, 7); c.fill(); });
+    c.fillStyle = '#3a4055'; c.font = '600 16px monospace'; c.fillText(titles[idx % titles.length].toLowerCase() + '.studio', 120, 33);
+    const grd = c.createLinearGradient(40, 80, 860, 420); grd.addColorStop(0, ac); grd.addColorStop(1, '#0c0e14');
+    c.fillStyle = grd; c.fillRect(40, 80, 820, 300);
+    c.fillStyle = 'rgba(255,255,255,0.92)'; c.font = '700 56px Arial'; c.fillText(titles[idx % titles.length], 70, 230);
+    c.fillStyle = 'rgba(255,255,255,0.6)'; c.font = '400 20px Arial'; c.fillText('Premium digital experience', 70, 270);
+    c.fillStyle = ac; c.fillRect(70, 300, 150, 44); c.fillStyle = '#06070b'; c.font = '700 15px monospace'; c.fillText('EXPLORE', 100, 327);
+    for (let i = 0; i < 3; i++) {
+      c.fillStyle = '#13161f'; c.fillRect(40 + i * 276, 404, 256, 150);
+      c.fillStyle = ac; c.fillRect(60 + i * 276, 424, 40, 6);
+      c.fillStyle = '#2a3042';
+      c.fillRect(60 + i * 276, 444, 180, 8); c.fillRect(60 + i * 276, 462, 140, 8);
+      c.fillRect(60 + i * 276, 490, 210, 6); c.fillRect(60 + i * 276, 506, 170, 6);
+    }
+    const t = new THREE.CanvasTexture(cn); t.anisotropy = 4; return t;
+  };
+
+  // ---- floating screen panels ----
+  app._buildScreens = function () {
+    const THREE = window.THREE;
+    const g = new THREE.Group();
+    const layout = [
+      { x: 0, y: 1, z: -196, ry: 0.0, s: 1.25 },
+      { x: -9, y: 4, z: -190, ry: 0.5, s: 0.78 },
+      { x: 9.5, y: -2.5, z: -189, ry: -0.5, s: 0.82 },
+      { x: -7, y: -4, z: -202, ry: 0.35, s: 0.62 },
+      { x: 8, y: 5, z: -204, ry: -0.4, s: 0.6 }
+    ];
+    app.screens = [];
+    layout.forEach((L, i) => {
+      const w = 9 * L.s, h = 6 * L.s;
+      const back = new THREE.Mesh(new THREE.PlaneGeometry(w + 0.5, h + 0.5), new THREE.MeshBasicMaterial({ color: 0x05070d }));
+      const screen = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: app._siteTexture(i) }));
+      const frame = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(w + 0.5, h + 0.5)), new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.5 }));
+      const sub = new THREE.Group(); screen.position.z = 0.05; sub.add(back, screen, frame);
+      sub.position.set(L.x, L.y, L.z); sub.rotation.y = L.ry;
+      g.add(sub); app.screens.push({ g: sub, base: L.ry });
+    });
+    app.show = g; app.scene.add(g);
+  };
+
+  // ---- void wireframe ----
+  app._buildVoid = function () {
+    const THREE = window.THREE;
+    const wire = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(9, 1)), new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.18 }));
+    wire.position.set(0, 0, -258);
+    app.voidMesh = wire; app.scene.add(wire);
+  };
+
+  // ---- custom cursor ----
+  app._initCursor = function () {
+    app.cursorEl = document.getElementById('asc-cursor');
+    document.querySelectorAll('[data-magnet]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (app.cursorEl) { app.cursorEl.style.width = '52px'; app.cursorEl.style.height = '52px'; app.cursorEl.style.background = 'rgba(159,182,255,0.12)'; }
+      });
+      el.addEventListener('mouseleave', () => {
+        if (app.cursorEl) { app.cursorEl.style.width = '30px'; app.cursorEl.style.height = '30px'; app.cursorEl.style.background = 'transparent'; el.style.transform = ''; }
+      });
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${dx * 0.25}px,${dy * 0.3}px)`;
+      });
+    });
+  };
+
+  // ---- scroll snap ----
+  app._initSnap = function () {
+    app.snaps = [0.04, 0.40, 0.62, 0.94];
+    app.snapIdx = 0;
+    app.animating = false;
+
+    const max = () => Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - innerHeight;
+    const easeInOut = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+    app._tweenTo = idx => {
+      idx = Math.max(0, Math.min(app.snaps.length - 1, idx));
+      if (idx === app.snapIdx && app.animating) return;
+      app.snapIdx = idx;
+      app.animating = true;
+      const start = window.scrollY || 0;
+      const end = app.snaps[idx] * max();
+      const dur = 1050, t0 = performance.now();
+      const step = now => {
+        const p = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, start + (end - start) * easeInOut(p));
+        if (p < 1) { app._snapRaf = requestAnimationFrame(step); }
+        else { setTimeout(() => { app.animating = false; }, 90); }
+      };
+      app._snapRaf = requestAnimationFrame(step);
+    };
+
+    app._go = dir => { if (!app.animating) app._tweenTo(app.snapIdx + dir); };
+    app._nearest = () => {
+      const f = (window.scrollY || 0) / (max() || 1);
+      let bi = 0, bd = 9;
+      app.snaps.forEach((s, i) => { const d = Math.abs(s - f); if (d < bd) { bd = d; bi = i; } });
+      return bi;
+    };
+
+    let wheelLock = false;
+    app._onWheel = e => {
+      e.preventDefault();
+      if (app.animating || wheelLock) return;
+      if (Math.abs(e.deltaY) < 8) return;
+      wheelLock = true; setTimeout(() => { wheelLock = false; }, 120);
+      app._go(e.deltaY > 0 ? 1 : -1);
+    };
+    app._onKey = e => {
+      const k = e.key;
+      if (['ArrowDown', 'PageDown', ' ', 'ArrowRight'].includes(k)) { e.preventDefault(); app._go(1); }
+      else if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(k)) { e.preventDefault(); app._go(-1); }
+      else if (k === 'Home') { e.preventDefault(); app._tweenTo(0); }
+      else if (k === 'End') { e.preventDefault(); app._tweenTo(app.snaps.length - 1); }
+    };
+    app._touchY = null;
+    app._onTouchStart = e => { app._touchY = e.touches[0].clientY; };
+    app._onTouchMove = e => { e.preventDefault(); };
+    app._onTouchEnd = e => {
+      if (app._touchY == null || app.animating) return;
+      const dy = app._touchY - (e.changedTouches[0] ? e.changedTouches[0].clientY : app._touchY);
+      if (Math.abs(dy) > 40) app._go(dy > 0 ? 1 : -1);
+      app._touchY = null;
+    };
+
+    addEventListener('wheel', app._onWheel, { passive: false });
+    addEventListener('keydown', app._onKey);
+    addEventListener('touchstart', app._onTouchStart, { passive: true });
+    addEventListener('touchmove', app._onTouchMove, { passive: false });
+    addEventListener('touchend', app._onTouchEnd, { passive: true });
+
+    [0, 1, 2, 3].forEach(i => {
+      const r = document.getElementById('rail-' + i);
+      if (r) r.addEventListener('click', () => app._tweenTo(i));
+    });
+  };
+
+  // ---- camera sample along keyframes ----
+  app._sample = function (t) {
+    const k = app.keys; let i = 0;
+    while (i < k.length - 1 && t > k[i + 1].p) i++;
+    const a = k[i], b = k[Math.min(i + 1, k.length - 1)];
+    let f = b.p === a.p ? 0 : (t - a.p) / (b.p - a.p); f = Math.max(0, Math.min(1, f));
+    f = f < 0.5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+    const lerp = (u, v) => u + (v - u) * f;
+    return {
+      pos: [lerp(a.pos[0], b.pos[0]), lerp(a.pos[1], b.pos[1]), lerp(a.pos[2], b.pos[2])],
+      look: [lerp(a.look[0], b.look[0]), lerp(a.look[1], b.look[1]), lerp(a.look[2], b.look[2])]
+    };
+  };
+
+  app._band = function (p, a, b, e) {
+    if (p < a - e || p > b + e) return 0;
+    if (p < a) return (p - (a - e)) / e;
+    if (p > b) return 1 - (p - b) / e;
+    return 1;
+  };
+  app._set = function (id, v) {
+    const el = document.getElementById(id);
+    if (el) el.style.opacity = v.toFixed(3);
+  };
+
+  // ---- main render loop ----
+  app._loop = function () {
+    if (!app.alive) return;
+    app._raf = requestAnimationFrame(() => app._loop());
+    const doc = document.documentElement;
+    const max = Math.max(doc.scrollHeight, document.body.scrollHeight) - innerHeight;
+    const top = window.scrollY || window.pageYOffset || document.body.scrollTop || doc.scrollTop || 0;
+    app.target = max > 0 ? top / max : 0;
+    app.scroll += (app.target - app.scroll) * 0.075;
+    const t = app.scroll;
+
+    app.cmx += (app.mx - app.cmx) * 0.05;
+    app.cmy += (app.my - app.cmy) * 0.05;
+    const s = app._sample(t);
+    app.camera.position.set(s.pos[0] + app.cmx * 2.2, s.pos[1] - app.cmy * 1.6, s.pos[2]);
+    app._tmpL.set(s.look[0], s.look[1], s.look[2]);
+    app.camera.lookAt(app._tmpL);
+
+    const now = performance.now() * 0.001;
+    if (app.hero) { app.hero.rotation.y += 0.0035; app.hero.rotation.x = Math.sin(now * 0.3) * 0.12; app.heroInner.rotation.y -= 0.006; app.heroInner.rotation.z += 0.004; }
+    if (app.stars) { app.stars.rotation.y += 0.0002; }
+    if (app.screens) { app.screens.forEach((o, i) => { o.g.rotation.y = o.base + Math.sin(now * 0.4 + i) * 0.18; o.g.position.y += Math.sin(now * 0.6 + i * 1.3) * 0.004; }); }
+    if (app.voidMesh) { app.voidMesh.rotation.y += 0.0015; app.voidMesh.rotation.x += 0.0008; }
+
+    app._set('ov-hero', app._band(t, 0, 0.09, 0.05));
+    const cityO = app._band(t, 0.19, 0.45, 0.05);
+    app._set('ov-city', cityO);
+    app._set('ind-0', Math.min(cityO, app._band(t, 0.215, 0.46, 0.03)));
+    app._set('ind-1', Math.min(cityO, app._band(t, 0.265, 0.46, 0.03)));
+    app._set('ind-2', Math.min(cityO, app._band(t, 0.315, 0.46, 0.03)));
+    app._set('ind-3', Math.min(cityO, app._band(t, 0.365, 0.46, 0.03)));
+    app._set('ov-show', app._band(t, 0.53, 0.73, 0.05));
+    app._set('ov-final', app._band(t, 0.83, 1.02, 0.05));
+    const cue = document.getElementById('asc-cue');
+    if (cue) cue.style.opacity = (t < 0.04 ? 1 : 0).toString();
+
+    const scene = (app.snapIdx != null && app.animating) ? app.snapIdx : (app._nearest ? app._nearest() : 0);
+    for (let i = 0; i < 4; i++) {
+      const r = document.getElementById('rail-' + i);
+      if (r) { r.style.opacity = i === scene ? '0.95' : '0.28'; r.style.transform = i === scene ? 'scale(1.7)' : 'scale(1)'; }
+    }
+
+    if (app.cursorEl) {
+      app.cur.x += (app.cur.tx - app.cur.x) * 0.18;
+      app.cur.y += (app.cur.ty - app.cur.y) * 0.18;
+      app.cursorEl.style.left = app.cur.x + 'px';
+      app.cursorEl.style.top = app.cur.y + 'px';
+    }
+
+    app.renderer.render(app.scene, app.camera);
+  };
+
+  // ---- init THREE scene ----
+  app._init = function () {
+    const THREE = window.THREE;
+    const cv = document.getElementById('ascora-gl');
+    const mobile = innerWidth < 768;
+    app.mobile = mobile;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: !mobile, alpha: true, powerPreference: 'high-performance' });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(Math.min(mobile ? 1.5 : 2, devicePixelRatio));
+    app.renderer = renderer;
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x050507, 0.0085);
+    app.scene = scene;
+
+    const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.1, 600);
+    camera.position.set(0, 0, 16);
+    app.camera = camera;
+
+    app._buildStars();
+    app._buildHero();
+    app._buildCity();
+    app._buildScreens();
+    app._buildVoid();
+
+    app.keys = [
+      { p: 0.00, pos: [0, 0, 16], look: [0, 0, 0] },
+      { p: 0.12, pos: [0, 0, 6], look: [0, 0, 0] },
+      { p: 0.20, pos: [3, 3, -14], look: [0, 2, -60] },
+      { p: 0.33, pos: [-4, 6, -58], look: [2, 3, -110] },
+      { p: 0.45, pos: [2, 3, -108], look: [0, 1, -158] },
+      { p: 0.55, pos: [0, 1, -164], look: [0, 0, -196] },
+      { p: 0.66, pos: [7, 2, -182], look: [-2, 0, -198] },
+      { p: 0.73, pos: [-5, 1, -188], look: [2, 0, -200] },
+      { p: 0.85, pos: [0, 0, -216], look: [0, 0, -252] },
+      { p: 1.00, pos: [0, 0, -244], look: [0, 0, -264] }
+    ];
+
+    app._onResize = () => {
+      renderer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+    };
+    app._onMove = e => {
+      app.mx = e.clientX / innerWidth - 0.5;
+      app.my = e.clientY / innerHeight - 0.5;
+      app.cur.tx = e.clientX;
+      app.cur.ty = e.clientY;
+    };
+    addEventListener('resize', app._onResize);
+    addEventListener('mousemove', app._onMove, { passive: true });
+
+    app._initCursor();
+    app._initSnap();
+
+    app._tmpL = new THREE.Vector3();
+
+    app._loop();
+
+    setTimeout(() => {
+      const pl = document.getElementById('asc-preload');
+      const bar = document.getElementById('asc-bar');
+      if (bar) bar.style.width = '100%';
+      if (pl) { pl.style.opacity = '0'; setTimeout(() => pl.style.display = 'none', 950); }
+    }, 420);
+  };
+
+  // ---- wait for THREE to load, then init ----
+  app._waitThree = function () {
+    if (!app.alive) return;
+    let pct = Math.min(96, (app._p = (app._p || 0) + 9));
+    const bar = document.getElementById('asc-bar');
+    if (bar) bar.style.width = pct + '%';
+    if (window.THREE) { app._init(); }
+    else { setTimeout(() => app._waitThree(), 90); }
+  };
+
+  app._waitThree();
+})();
+</script>
+</body>
+</html>
