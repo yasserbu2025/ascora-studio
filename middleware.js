@@ -26,7 +26,7 @@ export default function middleware(request) {
   return new Response('Authentication required.', {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="Ascora Studio — Private", charset="UTF-8"',
+      'WWW-Authenticate': 'Basic realm="Ascora Studio Admin"',
       'Content-Type': 'text/plain',
       'Cache-Control': 'no-store',
     },
