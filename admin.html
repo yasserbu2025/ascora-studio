@@ -176,6 +176,17 @@ textarea.din{resize:vertical;min-height:84px;line-height:1.5}
 .toast .ts{font-size:12.5px;color:var(--mut)}
 @keyframes tin{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
 
+/* ===== ACCOUNT MODAL ===== */
+#acct{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(3,4,8,0.72);backdrop-filter:blur(6px)}
+#acct.open{display:flex}
+.acct-card{position:relative;width:100%;max-width:404px;background:linear-gradient(180deg,#0e1016,#090b10);border:1px solid var(--line2);border-radius:20px;padding:34px 30px;box-shadow:0 40px 120px -30px rgba(0,0,0,0.8)}
+.acct-card h2{font-weight:500;font-size:1.4rem;letter-spacing:-0.02em;margin-bottom:6px}
+.acct-card .sub{color:var(--mut);font-size:13.5px;margin-bottom:22px}
+.acct-card .sub span{color:var(--acc2)}
+.acct-close{position:absolute;top:15px;right:15px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--mut);font-size:15px;display:flex;align-items:center;justify-content:center}
+.acct-close:hover{color:#fff;border-color:var(--acc2)}
+.acct-ok{color:#2fd07a;font-size:13px;font-family:var(--mono);margin-top:6px;min-height:18px}
+
 /* ===== DENIED ===== */
 #denied{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
 #denied .box{max-width:380px}
@@ -240,6 +251,9 @@ textarea.din{resize:vertical;min-height:84px;line-height:1.5}
     <div class="tb-user">
       <div class="who"><b id="u-name">Admin</b><br><small id="u-email"></small></div>
       <div class="av" id="u-av">A</div>
+      <button class="bell" id="acct-open" title="Account settings" style="margin-right:2px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H2a2 2 0 110-4h.09A1.65 1.65 0 003.6 8a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H8a1.65 1.65 0 001-1.51V2a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V8a1.65 1.65 0 001.51 1H22a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
       <button class="btn btn-ghost" id="signout" style="padding:9px 12px">SIGN OUT</button>
     </div>
   </div>
@@ -267,6 +281,19 @@ textarea.din{resize:vertical;min-height:84px;line-height:1.5}
       <button class="btn btn-primary" id="d-save" style="flex:1">SAVE CHANGES</button>
       <button class="btn btn-ghost danger" id="d-del" style="border-color:rgba(255,107,107,0.4);color:#ff8b7a">DELETE</button>
     </div>
+  </div>
+</div>
+
+<!-- ACCOUNT / CHANGE PASSWORD MODAL -->
+<div id="acct">
+  <div class="acct-card">
+    <button class="acct-close" data-acct-close aria-label="Close">✕</button>
+    <h2>Change password</h2>
+    <p class="sub">Update the password for <span id="acct-email"></span>.</p>
+    <div class="fld"><label>New password</label><input class="inp" type="password" id="acct-pw1" autocomplete="new-password" placeholder="At least 8 characters"></div>
+    <div class="fld"><label>Confirm new password</label><input class="inp" type="password" id="acct-pw2" autocomplete="new-password" placeholder="Repeat new password"></div>
+    <button class="btn btn-primary btn-block" id="acct-save">UPDATE PASSWORD</button>
+    <div class="login-err" id="acct-err"></div>
   </div>
 </div>
 
@@ -301,6 +328,7 @@ const STAT_CARDS = [
 ];
 
 const state = { leads: [], view: 'pipeline', search: '', tableStatus: 'all', sortKey: 'created_at', sortDir: 'desc', selected: null };
+let currentEmail = '';
 const $ = s => document.querySelector(s);
 const esc = s => (s==null?'':String(s)).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -349,11 +377,38 @@ async function signOut(){ await supabase.auth.signOut(); location.reload(); }
 $('#signout').addEventListener('click', signOut);
 $('#denied-out').addEventListener('click', signOut);
 
+/* ---- change password ---- */
+const acctModal = $('#acct');
+function openAcct(){
+  $('#acct-email').textContent = currentEmail || '';
+  $('#acct-pw1').value = ''; $('#acct-pw2').value = ''; $('#acct-err').textContent = '';
+  acctModal.classList.add('open');
+  setTimeout(() => $('#acct-pw1').focus(), 60);
+}
+function closeAcct(){ acctModal.classList.remove('open'); }
+$('#acct-open').addEventListener('click', openAcct);
+document.querySelectorAll('[data-acct-close]').forEach(el => el.addEventListener('click', closeAcct));
+acctModal.addEventListener('click', e => { if (e.target === acctModal) closeAcct(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && acctModal.classList.contains('open')) closeAcct(); });
+$('#acct-save').addEventListener('click', async () => {
+  const p1 = $('#acct-pw1').value, p2 = $('#acct-pw2').value, err = $('#acct-err');
+  err.textContent = '';
+  if (p1.length < 8) { err.textContent = 'Use at least 8 characters.'; return; }
+  if (p1 !== p2) { err.textContent = 'Passwords do not match.'; return; }
+  const btn = $('#acct-save'); btn.disabled = true; const o = btn.textContent; btn.textContent = 'UPDATING…';
+  const { error } = await supabase.auth.updateUser({ password: p1 });
+  btn.disabled = false; btn.textContent = o;
+  if (error) { err.textContent = error.message || 'Could not update password.'; return; }
+  closeAcct();
+  toast('Password updated', 'Use your new password next time you sign in.');
+});
+
 /* ============ APP ============ */
 let realtimeChannel=null;
 async function startApp(session){
   show('app');
   const email = session.user.email || '';
+  currentEmail = email;
   $('#u-email').textContent = email;
   $('#u-av').textContent = (email[0]||'A').toUpperCase();
   await loadLeads();
