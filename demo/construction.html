@@ -140,6 +140,13 @@ const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.class
 const hb=document.getElementById('heroBg');addEventListener('scroll',()=>{if(scrollY<innerHeight)hb.style.transform='translateY('+(scrollY*0.26)+'px) scale(1.06)';},{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.16});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.08+'s';io.observe(el);});
+/* 3D tilt motion */
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const tilt=(el,m)=>{el.style.transition='transform .4s cubic-bezier(.2,.8,.2,1)';el.style.willChange='transform';
+    el.addEventListener('mousemove',e=>{const b=el.getBoundingClientRect();const x=(e.clientX-b.left)/b.width-0.5,y=(e.clientY-b.top)/b.height-0.5;el.style.transform=`perspective(1100px) rotateY(${x*m}deg) rotateX(${-y*m}deg) scale(1.02)`;});
+    el.addEventListener('mouseleave',()=>el.style.transform='perspective(1100px) rotateY(0deg) rotateX(0deg) scale(1)');};
+  document.querySelectorAll('.res .img, .gal a, .amen-grid .a').forEach(el=>tilt(el,8));
+}
 </script>
 </body>
 </html>

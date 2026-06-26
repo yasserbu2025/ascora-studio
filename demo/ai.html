@@ -276,6 +276,18 @@ const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.15});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.07+'s';io.observe(el);});
+/* 3D tilt motion */
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  const tilt=(el,m)=>{el.style.transition='transform .4s cubic-bezier(.2,.8,.2,1)';el.style.willChange='transform';
+    el.addEventListener('mousemove',e=>{const b=el.getBoundingClientRect();const x=(e.clientX-b.left)/b.width-0.5,y=(e.clientY-b.top)/b.height-0.5;el.style.transform=`perspective(1100px) rotateY(${x*m}deg) rotateX(${-y*m}deg) scale(1.02)`;});
+    el.addEventListener('mouseleave',()=>el.style.transform='perspective(1100px) rotateY(0deg) rotateX(0deg) scale(1)');};
+  document.querySelectorAll('.mock').forEach(el=>tilt(el,6));
+  document.querySelectorAll('.acard, .tier').forEach(el=>tilt(el,8));
+}
+/* ambient 3D float on the agent console */
+(function(){var m=document.querySelector('.mock');if(!m)return;var t0=performance.now(),hov=false;
+  m.addEventListener('mouseenter',()=>hov=true);m.addEventListener('mouseleave',()=>hov=false);
+  function f(now){var s=(now-t0)/1000;if(!hov)m.style.transform='perspective(1100px) rotateY('+(Math.sin(s*0.5)*3)+'deg) rotateX('+(Math.cos(s*0.4)*1.6)+'deg)';requestAnimationFrame(f);}requestAnimationFrame(f);})();
 </script>
 </body>
 </html>
