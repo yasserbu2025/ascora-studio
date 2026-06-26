@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Build — Cinematic Concept by Ascora Studio</title>
+<meta name="description" content="An immersive 3D construction experience — a cinematic concept by Ascora Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cinematic.css">
+<style>:root{--acc:#ff9e3d;--acc-soft:#ffc283}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="cine-vignette"></div>
+<div class="cine-scan"></div>
+
+<header class="cine-nav">
+  <a class="brand" href="/#asc-work" data-magnet><span class="dia"></span><span>ASCORA</span></a>
+  <div class="right"><span class="ind">CONSTRUCTION · CONCEPT</span><a class="back" href="/#asc-work" data-magnet>← BACK TO STUDIO</a></div>
+</header>
+
+<div class="cine-pre"><div class="mark"><span class="d"></span><span>ATLAS BUILD</span></div><div class="bar"><i></i></div><div class="lbl">RENDERING EXPERIENCE</div></div>
+<div class="cine-cursor"></div>
+
+<div class="cine-hero">
+  <div class="eyebrow">A CINEMATIC CONCEPT BY ASCORA STUDIO</div>
+  <h1>We build what others <em>imagine.</em></h1>
+  <p>Atlas Build — engineering landmark structures with precision, safety, and a standard the industry measures itself against.</p>
+</div>
+<div class="cine-cue"><span>SCROLL</span><div class="line"></div></div>
+
+<div class="cine-float" data-from="0.18" data-to="0.62" style="top:24%;left:7%"><div class="glass"><div class="t">32 Floors</div><div class="d">FLAGSHIP TOWER</div></div></div>
+<div class="cine-float" data-from="0.42" data-to="0.9" style="bottom:20%;right:8%"><div class="glass"><div class="t">On Schedule</div><div class="d">0 SAFETY INCIDENTS</div></div></div>
+
+<main class="cine-scroll">
+  <div class="cine-spacer"></div>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">01 — The Build</div>
+      <h2>Trust, engineered from the <em>ground up.</em></h2>
+      <p>From foundation to final beam, every structure is delivered on time and to a tolerance most thought impossible. This is construction as craft.</p>
+      <div class="stats"><div class="s"><b>32</b><span>Floors</span></div><div class="s"><b>18mo</b><span>Delivery</span></div><div class="s"><b>0</b><span>Incidents</span></div></div>
+    </div>
+  </section>
+  <section class="cine-section right">
+    <div class="glass">
+      <div class="kicker">02 — Capabilities</div>
+      <h2>From skyline towers to <em>civic landmarks.</em></h2>
+      <p>Commercial, residential, and infrastructure projects delivered by one team with full structural, mechanical, and site management in-house.</p>
+      <div class="row"><span class="chip">Commercial</span><span class="chip">Residential</span><span class="chip">Infrastructure</span></div>
+    </div>
+  </section>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">03 — Process</div>
+      <h2>Precision at <em>every stage.</em></h2>
+      <p>Digital planning, real-time progress tracking, and a relentless safety culture — so clients always know exactly where their project stands.</p>
+      <div class="row"><span class="chip">BIM Planning</span><span class="chip">Live Tracking</span><span class="chip">Safety First</span></div>
+    </div>
+  </section>
+  <section class="cine-final">
+    <h2>Build with <em>confidence.</em></h2>
+    <p>Let's discuss your next landmark. Request a capability statement and timeline.</p>
+    <a class="cine-btn" href="/#asc-work" data-magnet>START A PROJECT →</a>
+  </section>
+  <footer class="cine-foot"><span>ATLAS BUILD — CONCEPT</span><a href="/#asc-work" data-magnet>DESIGNED BY ASCORA STUDIO →</a></footer>
+</main>
+
+<script src="assets/cinematic.js"></script>
+<script>
+Cinematic.init({
+  bg: 0x0a0908, accentHex: 0xff9e3d, dust: '#ffc58a',
+  fog: { color: 0x0c0a08, density: 0.014 },
+  ambient: 0.32, keyColor: 0xaebfe0, keyInt: 0.9, rimInt: 1.0, fillInt: 0.7,
+  floor: { y: 0, color: 0x0c0a08 },
+  photos: [
+    { id: '1503387762-592deb58ef4e',  pos: [12, 8, -4],   ry: -0.6, w: 10, h: 6.4 },
+    { id: '1541888946425-d81bb19240f5', pos: [-13, 9, -18], ry: 0.55, w: 10, h: 6.4 },
+    { id: '1504307651254-35680f356dfd', pos: [14, 12, -34], ry: -0.6, w: 9,  h: 6 },
+    { id: '1523413651479-597eb2da0ad6', pos: [-12, 16, -50],ry: 0.5,  w: 10, h: 6.4 },
+    { id: '1471039497385-b6d6ba609f9c', pos: [12, 20, -66], ry: -0.5, w: 9,  h: 6 },
+    { id: '1486406146926-c627a92ad1ab', pos: [-10, 22, -82],ry: 0.45, w: 10, h: 6 }
+  ],
+  cameraKeys: [
+    { p: 0.00, pos: [0, 28, 58],  look: [0, 10, -12] },
+    { p: 0.12, pos: [10, 9, 26],  look: [-2, 12, -24] },
+    { p: 0.32, pos: [-13, 6, 2],  look: [4, 16, -34] },
+    { p: 0.52, pos: [9, 14, -16], look: [-4, 20, -44] },
+    { p: 0.72, pos: [-7, 26, -34],look: [2, 24, -60] },
+    { p: 0.86, pos: [0, 18, -40], look: [0, 22, -78] },
+    { p: 1.00, pos: [0, 30, -66], look: [0, 16, -104] }
+  ],
+  build(THREE, scene, ctx) {
+    const steel = new THREE.MeshStandardMaterial({ color: 0x2b2e35, metalness: 0.85, roughness: 0.4 });
+    const beamMat = new THREE.MeshStandardMaterial({ color: 0x3a3e47, metalness: 0.9, roughness: 0.35 });
+    function box(w, h, d, x, y, z, m) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m || steel); b.position.set(x, y, z); scene.add(b); return b; }
+    // ---- steel-frame tower under construction ----
+    function frame(cx, cz, span, floors, fh, done) {
+      const g = new THREE.Group();
+      const corners = [[-span, -span], [span, -span], [-span, span], [span, span], [0, -span], [0, span], [-span, 0], [span, 0]];
+      corners.forEach(([x, z]) => { const c = new THREE.Mesh(new THREE.BoxGeometry(0.55, floors * fh, 0.55), steel); c.position.set(cx + x, floors * fh / 2, cz + z); g.add(c); });
+      for (let f = 1; f <= floors; f++) {
+        const y = f * fh;
+        const built = f <= done;
+        const bm = built ? beamMat : new THREE.MeshStandardMaterial({ color: 0xff9e3d, emissive: 0xff7a1a, emissiveIntensity: built ? 0 : 0.5, metalness: 0.8, roughness: 0.4 });
+        [[-span, span, 0.4, span * 2 + 0.5, 0.4, 0, -span], [-span, span, 0.4, span * 2 + 0.5, 0.4, 0, span]].forEach(() => {});
+        // perimeter beams
+        const beamH = new THREE.Mesh(new THREE.BoxGeometry(span * 2 + 0.6, 0.4, 0.4), bm);
+        const b1 = beamH.clone(); b1.position.set(cx, y, cz - span); g.add(b1);
+        const b2 = beamH.clone(); b2.position.set(cx, y, cz + span); g.add(b2);
+        const beamV = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.4, span * 2 + 0.6), bm);
+        const b3 = beamV.clone(); b3.position.set(cx - span, y, cz); g.add(b3);
+        const b4 = beamV.clone(); b4.position.set(cx + span, y, cz); g.add(b4);
+        // concrete floor slab on built floors
+        if (built) { const slab = new THREE.Mesh(new THREE.BoxGeometry(span * 2, 0.25, span * 2), new THREE.MeshStandardMaterial({ color: 0x16181d, metalness: 0.2, roughness: 0.9 })); slab.position.set(cx, y - 0.1, cz); g.add(slab); }
+      }
+      scene.add(g); return g;
+    }
+    frame(0, -50, 8, 14, 4.0, 8);   // hero tower
+    frame(-22, -34, 5, 8, 3.6, 5);
+    frame(20, -40, 6, 6, 3.8, 6);
+    // ---- tower crane ----
+    const crane = new THREE.Group();
+    const mast = box(0.9, 70, 0.9, 0, 35, 0, steel); crane.add(mast);
+    const jib = new THREE.Mesh(new THREE.BoxGeometry(60, 0.8, 0.8), steel); jib.position.set(16, 66, 0); crane.add(jib);
+    const cjib = new THREE.Mesh(new THREE.BoxGeometry(16, 0.8, 0.8), steel); cjib.position.set(-8, 66, 0); crane.add(cjib);
+    const counter = box(4, 2, 3, -14, 66, 0, beamMat); crane.add(counter);
+    const hook = new THREE.Mesh(new THREE.BoxGeometry(0.08, 14, 0.08), beamMat); hook.position.set(34, 58, 0); crane.add(hook);
+    const load = box(2.4, 2, 2.4, 34, 50, 0, new THREE.MeshStandardMaterial({ color: 0x16181d })); crane.add(load);
+    crane.position.set(16, 0, -50); scene.add(crane);
+    // crane warning beacon
+    const beacon = ctx.glowSprite('rgba(255,90,40,0.9)', 5); beacon.position.set(16, 71, -50); scene.add(beacon);
+    // ---- work lights (amber) ----
+    const lights = [];
+    [[-10, 5, -40], [12, 9, -52], [-20, 7, -30], [6, 17, -50], [22, 12, -40]].forEach(p => {
+      const pl = new THREE.PointLight(0xff9e3d, 1.1, 50); pl.position.set(p[0], p[1], p[2]); scene.add(pl);
+      const s = ctx.glowSprite('rgba(255,158,61,0.9)', 4); s.position.set(p[0], p[1], p[2]); scene.add(s); lights.push(s);
+    });
+    // foundation blocks + materials
+    box(14, 1.2, 14, 0, 0.6, -50, new THREE.MeshStandardMaterial({ color: 0x101216, roughness: 0.95 }));
+    for (let i = 0; i < 8; i++) box(2, 1, 4, (Math.random() - 0.5) * 40, 0.5, -18 - Math.random() * 50, new THREE.MeshStandardMaterial({ color: 0x14161b, roughness: 0.9 }));
+    return { update(t, now) { beacon.material.opacity = 0.5 + Math.abs(Math.sin(now * 2)) * 0.5; load.position.x = 34 + Math.sin(now * 0.4) * 3; hook.position.x = load.position.x; } };
+  }
+});
+</script>
+</body>
+</html>

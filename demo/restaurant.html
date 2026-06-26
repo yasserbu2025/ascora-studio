@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saison — Cinematic Concept by Ascora Studio</title>
+<meta name="description" content="An immersive 3D restaurant experience — a cinematic concept by Ascora Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cinematic.css">
+<style>:root{--acc:#ff6b4a;--acc-soft:#ffab85}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="cine-vignette"></div>
+<div class="cine-scan"></div>
+
+<header class="cine-nav">
+  <a class="brand" href="/#asc-work" data-magnet><span class="dia"></span><span>ASCORA</span></a>
+  <div class="right"><span class="ind">RESTAURANT · CONCEPT</span><a class="back" href="/#asc-work" data-magnet>← BACK TO STUDIO</a></div>
+</header>
+
+<div class="cine-pre"><div class="mark"><span class="d"></span><span>SAISON</span></div><div class="bar"><i></i></div><div class="lbl">RENDERING EXPERIENCE</div></div>
+<div class="cine-cursor"></div>
+
+<div class="cine-hero">
+  <div class="eyebrow">A CINEMATIC CONCEPT BY ASCORA STUDIO</div>
+  <h1>An evening you'll <em>remember.</em></h1>
+  <p>Saison — seasonal tasting menus served in a room designed for one thing: the kind of evening guests talk about for years.</p>
+</div>
+<div class="cine-cue"><span>SCROLL</span><div class="line"></div></div>
+
+<div class="cine-float" data-from="0.18" data-to="0.62" style="top:24%;left:7%"><div class="glass"><div class="t">★★★★★</div><div class="d">820 REVIEWS</div></div></div>
+<div class="cine-float" data-from="0.42" data-to="0.9" style="bottom:20%;right:8%"><div class="glass"><div class="t">Tonight</div><div class="d">2 TABLES REMAINING</div></div></div>
+
+<main class="cine-scroll">
+  <div class="cine-spacer"></div>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">01 — The Experience</div>
+      <h2>Dining as a sense of <em>occasion.</em></h2>
+      <p>Low light, warm brass, and a menu that changes with the season. Every detail is composed so the room disappears and the moment takes over.</p>
+      <div class="stats"><div class="s"><b>7</b><span>Courses</span></div><div class="s"><b>40</b><span>Seats</span></div><div class="s"><b>’19</b><span>Established</span></div></div>
+    </div>
+  </section>
+  <section class="cine-section right">
+    <div class="glass">
+      <div class="kicker">02 — The Menu</div>
+      <h2>Seasonal, sourced, <em>unforgettable.</em></h2>
+      <p>A tasting journey built around the best of each season, paired from a cellar curated over a decade. Vegetarian and pairing menus available.</p>
+      <div class="row"><span class="chip">Seasonal Tasting</span><span class="chip">Cellar Pairings</span><span class="chip">Chef's Table</span></div>
+    </div>
+  </section>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">03 — Reservations</div>
+      <h2>A table reserved <em>for you.</em></h2>
+      <p>Book your evening in seconds. Private dining and events available for parties who want the whole room to themselves.</p>
+      <div class="row"><span class="chip">Instant Booking</span><span class="chip">Private Dining</span><span class="chip">Events</span></div>
+    </div>
+  </section>
+  <section class="cine-final">
+    <h2>Reserve your <em>table.</em></h2>
+    <p>The best tables go first. Secure your evening at Saison.</p>
+    <a class="cine-btn" href="/#asc-work" data-magnet>BOOK A TABLE →</a>
+  </section>
+  <footer class="cine-foot"><span>SAISON — CONCEPT</span><a href="/#asc-work" data-magnet>DESIGNED BY ASCORA STUDIO →</a></footer>
+</main>
+
+<script src="assets/cinematic.js"></script>
+<script>
+Cinematic.init({
+  bg: 0x0a0706, accentHex: 0xff6b4a, dust: '#ffb88a',
+  fog: { color: 0x0b0807, density: 0.022 },
+  ambient: 0.3, keyColor: 0xffb38a, keyInt: 0.7, rimInt: 0.7, fillInt: 0.9,
+  floor: { y: 0, color: 0x0c0808 },
+  introZ: 12,
+  photos: [
+    { id: '1517248135467-4c7edcad34c4', pos: [9, 4, -6],    ry: -0.7, w: 8,   h: 5.2 },
+    { id: '1414235077428-338989a2e8c0', pos: [-9, 4.5, -20], ry: 0.7,  w: 8,   h: 5.2 },
+    { id: '1546069901-ba9599a7e63c',    pos: [10, 4, -34],   ry: -0.7, w: 7.5, h: 5 },
+    { id: '1559339352-11d035aa65de',    pos: [-9, 5, -48],   ry: 0.6,  w: 8,   h: 5.2 },
+    { id: '1424847651672-bf20a4b0982b', pos: [9, 5.5, -62],  ry: -0.6, w: 7.5, h: 5 },
+    { id: '1592861956120-e524fc739696', pos: [-8, 6, -76],   ry: 0.5,  w: 8,   h: 5 }
+  ],
+  cameraKeys: [
+    { p: 0.00, pos: [0, 6, 30],   look: [0, 3, -12] },
+    { p: 0.12, pos: [3.5, 3, 16], look: [-2, 3, -22] },
+    { p: 0.34, pos: [-4, 2.6, 2], look: [3, 3.5, -30] },
+    { p: 0.55, pos: [4, 3, -16],  look: [-3, 3, -46] },
+    { p: 0.74, pos: [-3, 4, -32], look: [2, 4, -62] },
+    { p: 0.88, pos: [0, 5, -42],  look: [0, 4, -74] },
+    { p: 1.00, pos: [0, 8, -62],  look: [0, 3, -94] }
+  ],
+  build(THREE, scene, ctx) {
+    const pendants = [], candles = [];
+    function pendant(x, z, y) {
+      const g = new THREE.Group();
+      const line = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 14, 6), new THREE.MeshBasicMaterial({ color: 0x2a1c12 }));
+      line.position.y = y + 7; g.add(line);
+      const shade = new THREE.Mesh(new THREE.ConeGeometry(0.55, 0.65, 18, 1, true), new THREE.MeshStandardMaterial({ color: 0x241712, metalness: 0.7, roughness: 0.35, side: THREE.DoubleSide }));
+      shade.position.y = y; g.add(shade);
+      const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.16, 12, 12), new THREE.MeshBasicMaterial({ color: 0xffc080 }));
+      bulb.position.y = y - 0.32; g.add(bulb);
+      const glow = ctx.glowSprite('rgba(255,150,80,0.95)', 3.4); glow.position.y = y - 0.32; g.add(glow);
+      g.position.set(x, 0, z); scene.add(g); pendants.push(glow);
+    }
+    function table(x, z) {
+      const g = new THREE.Group();
+      const top = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, 0.12, 28), new THREE.MeshStandardMaterial({ color: 0x14110e, metalness: 0.35, roughness: 0.55 }));
+      top.position.y = 1.1; g.add(top);
+      const ped = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 1.1, 12), new THREE.MeshStandardMaterial({ color: 0x0e0b09, metalness: 0.5, roughness: 0.5 })); ped.position.y = 0.55; g.add(ped);
+      // chairs
+      [[1.6, 0], [-1.6, 0], [0, 1.6], [0, -1.6]].forEach(([cx, cz]) => { const c = new THREE.Mesh(new THREE.BoxGeometry(0.7, 1.0, 0.7), new THREE.MeshStandardMaterial({ color: 0x100d0b, metalness: 0.3, roughness: 0.7 })); c.position.set(cx, 0.5, cz); g.add(c); });
+      // candle
+      const candle = ctx.glowSprite('rgba(255,170,90,0.95)', 1.5); candle.position.set(0, 1.45, 0); g.add(candle); candles.push(candle);
+      g.position.set(x, 0, z); scene.add(g);
+    }
+    // grid of tables + pendants down the room
+    for (let row = 0; row < 9; row++) {
+      const z = -6 - row * 9;
+      [-7, 0, 7].forEach((x, i) => { table(x + (row % 2 ? 2 : -2), z); pendant(x + (row % 2 ? 2 : -2), z, 7 + (i % 2) * 0.6); });
+    }
+    // warm key point lights for depth
+    [[0, 8, -20], [0, 8, -48], [0, 8, -76]].forEach(p => { const pl = new THREE.PointLight(0xff8a4a, 1.0, 60); pl.position.set(p[0], p[1], p[2]); scene.add(pl); });
+    // back bar wall with warm shelf glow
+    const wall = new THREE.Mesh(new THREE.BoxGeometry(40, 16, 1), new THREE.MeshStandardMaterial({ color: 0x100b09, metalness: 0.4, roughness: 0.6 }));
+    wall.position.set(0, 8, -92); scene.add(wall);
+    for (let i = 0; i < 5; i++) { const shelf = new THREE.Mesh(new THREE.PlaneGeometry(34, 0.18), new THREE.MeshBasicMaterial({ color: 0xff8a4a, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending })); shelf.position.set(0, 3 + i * 2.4, -91.4); scene.add(shelf); }
+    return { update(t, now) { for (let i = 0; i < candles.length; i++) candles[i].material.opacity = 0.7 + Math.sin(now * 3 + i) * 0.25; } };
+  }
+});
+</script>
+</body>
+</html>

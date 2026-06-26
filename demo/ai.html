@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neura AI — Cinematic Concept by Ascora Studio</title>
+<meta name="description" content="An immersive 3D AI-agency experience — a cinematic concept by Ascora Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cinematic.css">
+<style>:root{--acc:#4d7cff;--acc-soft:#9fd0ff}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="cine-vignette"></div>
+<div class="cine-scan"></div>
+
+<header class="cine-nav">
+  <a class="brand" href="/#asc-work" data-magnet><span class="dia"></span><span>ASCORA</span></a>
+  <div class="right"><span class="ind">AI AGENCY · CONCEPT</span><a class="back" href="/#asc-work" data-magnet>← BACK TO STUDIO</a></div>
+</header>
+
+<div class="cine-pre"><div class="mark"><span class="d"></span><span>NEURA AI</span></div><div class="bar"><i></i></div><div class="lbl">RENDERING EXPERIENCE</div></div>
+<div class="cine-cursor"></div>
+
+<div class="cine-hero">
+  <div class="eyebrow">A CINEMATIC CONCEPT BY ASCORA STUDIO</div>
+  <h1>Intelligence, <em>engineered.</em></h1>
+  <p>Neura AI — autonomous agents and applied intelligence that move your business from idea to deployment, faster than you thought possible.</p>
+</div>
+<div class="cine-cue"><span>SCROLL</span><div class="line"></div></div>
+
+<div class="cine-float" data-from="0.18" data-to="0.62" style="top:24%;left:7%"><div class="glass"><div class="t">99.99%</div><div class="d">UPTIME SLA</div></div></div>
+<div class="cine-float" data-from="0.42" data-to="0.9" style="bottom:20%;right:8%"><div class="glass"><div class="t">SOC 2</div><div class="d">TYPE II CERTIFIED</div></div></div>
+
+<main class="cine-scroll">
+  <div class="cine-spacer"></div>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">01 — The Platform</div>
+      <h2>From prototype to <em>production.</em></h2>
+      <p>A unified platform for building, evaluating, and deploying AI agents — with the observability and guardrails enterprises actually need.</p>
+      <div class="stats"><div class="s"><b>&lt;40ms</b><span>Latency</span></div><div class="s"><b>50M+</b><span>Calls / day</span></div><div class="s"><b>24/7</b><span>Autonomy</span></div></div>
+    </div>
+  </section>
+  <section class="cine-section right">
+    <div class="glass">
+      <div class="kicker">02 — Capabilities</div>
+      <h2>Agents that <em>get things done.</em></h2>
+      <p>Retrieval, tool-use, and multi-step reasoning, fine-tuned to your domain and wired into the systems you already run.</p>
+      <div class="row"><span class="chip">Autonomous Agents</span><span class="chip">RAG</span><span class="chip">Fine-tuning</span><span class="chip">Evals</span></div>
+    </div>
+  </section>
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">03 — Security</div>
+      <h2>Enterprise-grade <em>by default.</em></h2>
+      <p>Private deployments, full audit trails, and data that never leaves your boundary. Built for teams who can't compromise on trust.</p>
+      <div class="row"><span class="chip">Private Cloud</span><span class="chip">Audit Trails</span><span class="chip">Zero Retention</span></div>
+    </div>
+  </section>
+  <section class="cine-final">
+    <h2>Deploy <em>intelligence.</em></h2>
+    <p>Book a technical walkthrough and see your first agent live in days, not months.</p>
+    <a class="cine-btn" href="/#asc-work" data-magnet>BOOK A DEMO →</a>
+  </section>
+  <footer class="cine-foot"><span>NEURA AI — CONCEPT</span><a href="/#asc-work" data-magnet>DESIGNED BY ASCORA STUDIO →</a></footer>
+</main>
+
+<script src="assets/cinematic.js"></script>
+<script>
+Cinematic.init({
+  bg: 0x05060c, accentHex: 0x4d7cff, dust: '#9fd0ff',
+  fog: { color: 0x05070e, density: 0.016 },
+  ambient: 0.35, keyColor: 0xbcd0ff, keyInt: 0.6, rimInt: 1.0, fillInt: 0.9,
+  floor: { y: 0, color: 0x06080f },
+  photos: [
+    { id: '1558494949-ef010cbdcc31', pos: [6, 5, -6],    ry: -0.6, w: 9,   h: 5.6 },
+    { id: '1451187580459-43490279c0fa', pos: [-6, 5.5, -20], ry: 0.6,  w: 9,   h: 5.6 },
+    { id: '1518770660439-4636190af475', pos: [6, 6, -34],   ry: -0.6, w: 8.5, h: 5.4 },
+    { id: '1526374965328-7f61d4dc18c5', pos: [-6, 7, -48],  ry: 0.5,  w: 9,   h: 5.6 },
+    { id: '1488229297570-58520851e868', pos: [6, 8, -62],   ry: -0.5, w: 8.5, h: 5.4 },
+    { id: '1504384308090-c894fdcc538d', pos: [-5, 9, -74],  ry: 0.45, w: 9,   h: 5.4 }
+  ],
+  cameraKeys: [
+    { p: 0.00, pos: [0, 8, 40],   look: [0, 5, -10] },
+    { p: 0.12, pos: [2, 3.5, 22], look: [-1, 5, -20] },
+    { p: 0.34, pos: [-3, 4.5, 4], look: [2, 6, -34] },
+    { p: 0.55, pos: [3, 5.5, -16],look: [-2, 7, -52] },
+    { p: 0.74, pos: [-2, 8, -36], look: [1, 9, -70] },
+    { p: 0.88, pos: [0, 9, -54],  look: [0, 9, -82] },
+    { p: 1.00, pos: [0, 12, -74], look: [0, 9, -104] }
+  ],
+  build(THREE, scene, ctx) {
+    // tech grid floor
+    const grid = new THREE.GridHelper(300, 90, 0x1d3b7a, 0x0e1f44); grid.position.y = 0.02; grid.material.transparent = true; grid.material.opacity = 0.5; scene.add(grid);
+    // ---- server monoliths forming a corridor ----
+    function server(x, z, face) {
+      const g = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.BoxGeometry(3, 16, 3), new THREE.MeshStandardMaterial({ color: 0x0a0e1a, metalness: 0.85, roughness: 0.28 }));
+      body.position.y = 8; g.add(body);
+      for (let i = 0; i < 6; i++) {
+        const strip = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 0.28), new THREE.MeshBasicMaterial({ color: Math.random() < 0.5 ? 0x4d7cff : 0x22d3ee, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending }));
+        strip.position.set(face * 1.55, 2 + i * 2.4, 0); strip.rotation.y = face * Math.PI / 2; g.add(strip);
+      }
+      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3, 16, 3)), new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.4 }));
+      edges.position.y = 8; g.add(edges);
+      g.position.set(x, 0, z); scene.add(g);
+    }
+    for (let i = 0; i < 7; i++) { const z = -8 - i * 8; server(10, z, -1); server(-10, z, 1); }
+    // ---- floating neural network ----
+    const cloud = new THREE.Group(); const center = new THREE.Vector3(0, 9, -86); cloud.position.copy(center); scene.add(cloud);
+    const pts = [], nodeMeshes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.26, 12, 12);
+    for (let i = 0; i < 48; i++) {
+      const p = new THREE.Vector3((Math.random() - 0.5) * 24, (Math.random() - 0.5) * 16, (Math.random() - 0.5) * 22);
+      pts.push(p);
+      const col = Math.random() < 0.5 ? 0x4d7cff : 0x22d3ee;
+      const m = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: col })); m.position.copy(p); cloud.add(m); nodeMeshes.push(m);
+      const gl = ctx.glowSprite(col === 0x4d7cff ? 'rgba(77,124,255,0.9)' : 'rgba(34,211,238,0.9)', 2.2); gl.position.copy(p); cloud.add(gl);
+    }
+    // connections
+    const linePos = [];
+    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+      if (pts[i].distanceTo(pts[j]) < 7 && Math.random() < 0.5) { linePos.push(pts[i].x, pts[i].y, pts[i].z, pts[j].x, pts[j].y, pts[j].z); }
+    }
+    const lgeo = new THREE.BufferGeometry(); lgeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos, 3));
+    const lines = new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending })); cloud.add(lines);
+    const coreGlow = ctx.glowSprite('rgba(77,124,255,0.5)', 40); coreGlow.position.copy(center); scene.add(coreGlow);
+    return {
+      update(t, now) {
+        cloud.rotation.y += 0.0016; cloud.rotation.x = Math.sin(now * 0.2) * 0.08;
+        for (let i = 0; i < nodeMeshes.length; i++) { const s = 0.7 + Math.abs(Math.sin(now * 1.5 + i)) * 0.8; nodeMeshes[i].scale.setScalar(s); }
+      }
+    };
+  }
+});
+</script>
+</body>
+</html>

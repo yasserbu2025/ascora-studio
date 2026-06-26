@@ -73,7 +73,9 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
 /* portfolio concepts */
 .asc-port{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(40px,6vh,68px)}
 @media (max-width:720px){.asc-port{grid-template-columns:1fr}}
-.asc-port-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);transition:transform .4s,border-color .4s,box-shadow .4s}
+.asc-port-card{display:block;text-decoration:none;color:inherit;cursor:pointer;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);transition:transform .4s,border-color .4s,box-shadow .4s}
+.asc-port-body .enter{display:inline-block;margin-top:12px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#9fb6ff;opacity:0.85;transition:color .3s,letter-spacing .3s}
+.asc-port-card:hover .enter{color:#fff;letter-spacing:0.24em}
 .asc-port-card:hover{transform:translateY(-6px);border-color:rgba(77,124,255,0.45);box-shadow:0 30px 70px -30px rgba(77,124,255,0.5)}
 .asc-port-thumb{height:clamp(180px,24vw,260px);position:relative;display:flex;align-items:flex-end;padding:22px}
 .asc-port-thumb .mock{position:absolute;inset:0;opacity:0.9}
@@ -297,22 +299,22 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
   <section id="asc-work" class="asc-section">
     <h2 class="asc-h2">Selected work</h2>
     <div class="asc-port">
-      <div class="asc-port-card">
-        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#1b2440,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(77,124,255,0.35),transparent 60%);"></div><span class="tag">CONCEPT</span></div>
-        <div class="asc-port-body"><h3>Construction</h3></div>
-      </div>
-      <div class="asc-port-card">
-        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#3a1d18,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(255,122,89,0.32),transparent 60%);"></div><span class="tag">CONCEPT</span></div>
-        <div class="asc-port-body"><h3>Restaurant</h3></div>
-      </div>
-      <div class="asc-port-card">
-        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#16322a,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(35,192,138,0.3),transparent 60%);"></div><span class="tag">CONCEPT</span></div>
-        <div class="asc-port-body"><h3>Real Estate</h3></div>
-      </div>
-      <div class="asc-port-card">
-        <div class="asc-port-thumb" style="background:linear-gradient(135deg,#241b40,#05070d);"><div class="mock" style="background:linear-gradient(120deg,rgba(122,92,255,0.34),transparent 60%);"></div><span class="tag">CONCEPT</span></div>
-        <div class="asc-port-body"><h3>AI Agency</h3></div>
-      </div>
+      <a class="asc-port-card" href="demo/construction.html" data-magnet>
+        <div class="asc-port-thumb" style="background-image:linear-gradient(180deg,rgba(5,7,13,0.15),rgba(5,7,13,0.85)),url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"><span class="tag">LIVE 3D CONCEPT</span></div>
+        <div class="asc-port-body"><h3>Construction</h3><span class="enter">ENTER EXPERIENCE →</span></div>
+      </a>
+      <a class="asc-port-card" href="demo/restaurant.html" data-magnet>
+        <div class="asc-port-thumb" style="background-image:linear-gradient(180deg,rgba(5,7,13,0.15),rgba(5,7,13,0.85)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"><span class="tag">LIVE 3D CONCEPT</span></div>
+        <div class="asc-port-body"><h3>Restaurant</h3><span class="enter">ENTER EXPERIENCE →</span></div>
+      </a>
+      <a class="asc-port-card" href="demo/realestate.html" data-magnet>
+        <div class="asc-port-thumb" style="background-image:linear-gradient(180deg,rgba(5,7,13,0.15),rgba(5,7,13,0.85)),url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"><span class="tag">LIVE 3D CONCEPT</span></div>
+        <div class="asc-port-body"><h3>Real Estate</h3><span class="enter">ENTER EXPERIENCE →</span></div>
+      </a>
+      <a class="asc-port-card" href="demo/ai.html" data-magnet>
+        <div class="asc-port-thumb" style="background-image:linear-gradient(180deg,rgba(5,7,13,0.15),rgba(5,7,13,0.85)),url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=crop');background-size:cover;background-position:center;"><span class="tag">LIVE 3D CONCEPT</span></div>
+        <div class="asc-port-body"><h3>AI Agency</h3><span class="enter">ENTER EXPERIENCE →</span></div>
+      </a>
     </div>
     <div style="margin-top:48px;"><button class="asc-btn asc-btn-primary" data-magnet data-open-form>BOOK A DISCOVERY CALL →</button></div>
   </section>

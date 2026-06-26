@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vantage Estates — Cinematic Concept by Ascora Studio</title>
+<meta name="description" content="An immersive 3D real-estate experience — a cinematic concept by Ascora Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cinematic.css">
+<style>:root{--acc:#c9a96a;--acc-soft:#e6cf9c}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div class="cine-vignette"></div>
+<div class="cine-scan"></div>
+
+<header class="cine-nav">
+  <a class="brand" href="/#asc-work" data-magnet><span class="dia"></span><span>ASCORA</span></a>
+  <div class="right">
+    <span class="ind">REAL ESTATE · CONCEPT</span>
+    <a class="back" href="/#asc-work" data-magnet>← BACK TO STUDIO</a>
+  </div>
+</header>
+
+<div class="cine-pre"><div class="mark"><span class="d"></span><span>VANTAGE ESTATES</span></div><div class="bar"><i></i></div><div class="lbl">RENDERING EXPERIENCE</div></div>
+<div class="cine-cursor"></div>
+
+<div class="cine-hero">
+  <div class="eyebrow">A CINEMATIC CONCEPT BY ASCORA STUDIO</div>
+  <h1>Property, reimagined as <em>experience.</em></h1>
+  <p>Vantage Estates — a landmark residence where architecture, light, and the city skyline become one continuous story.</p>
+</div>
+<div class="cine-cue"><span>SCROLL</span><div class="line"></div></div>
+
+<!-- floating parallax cards -->
+<div class="cine-float" data-from="0.18" data-to="0.62" style="top:22%;left:7%"><div class="glass"><div class="t">€2.4M</div><div class="d">STARTING PRICE</div></div></div>
+<div class="cine-float" data-from="0.42" data-to="0.9" style="bottom:20%;right:8%"><div class="glass"><div class="t">Now Selling</div><div class="d">PHASE 01 · 48 RESIDENCES</div></div></div>
+
+<main class="cine-scroll">
+  <div class="cine-spacer"></div>
+
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">01 — The Development</div>
+      <h2>A landmark where <em>light</em> meets the skyline.</h2>
+      <p>Floor-to-ceiling glass, cantilevered terraces, and a façade engineered to catch golden hour. Every residence is positioned for the view.</p>
+      <div class="stats"><div class="s"><b>48</b><span>Residences</span></div><div class="s"><b>12</b><span>Floors</span></div><div class="s"><b>5★</b><span>Concierge</span></div></div>
+    </div>
+  </section>
+
+  <section class="cine-section right">
+    <div class="glass">
+      <div class="kicker">02 — Residences</div>
+      <h2>Space designed to <em>breathe.</em></h2>
+      <p>Three signature layouts, each with private outdoor space, smart-home integration, and interiors finished in natural stone and warm oak.</p>
+      <div class="row"><span class="chip">Penthouses</span><span class="chip">Sky Villas</span><span class="chip">Garden Suites</span></div>
+    </div>
+  </section>
+
+  <section class="cine-section">
+    <div class="glass">
+      <div class="kicker">03 — Amenities</div>
+      <h2>A private world, <em>above the city.</em></h2>
+      <p>Rooftop infinity pool, spa and wellness floor, residents' lounge, and 24-hour concierge — a sanctuary that begins the moment you arrive.</p>
+      <div class="row"><span class="chip">Infinity Pool</span><span class="chip">Spa & Wellness</span><span class="chip">Private Cinema</span><span class="chip">Valet</span></div>
+    </div>
+  </section>
+
+  <section class="cine-final">
+    <h2>Own the <em>view.</em></h2>
+    <p>Private viewings now available. Reserve your residence before Phase 01 closes.</p>
+    <a class="cine-btn" href="/#asc-work" data-magnet>REQUEST A VIEWING →</a>
+  </section>
+
+  <footer class="cine-foot">
+    <span>VANTAGE ESTATES — CONCEPT</span>
+    <a href="/#asc-work" data-magnet>DESIGNED BY ASCORA STUDIO →</a>
+  </footer>
+</main>
+
+<script src="assets/cinematic.js"></script>
+<script>
+Cinematic.init({
+  bg: 0x0b0a0e, accentHex: 0xc9a96a, dust: '#e9c98a',
+  fog: { color: 0x0c0b10, density: 0.013 },
+  ambient: 0.4, keyColor: 0xffd9a0, keyInt: 1.25, rimInt: 0.7, fillInt: 0.5,
+  floor: { y: 0, color: 0x0a0b12 },
+  photos: [
+    { id: '1600596542815-ffad4c1539a9', pos: [11, 9, -2],   ry: -0.6, w: 10, h: 6.4 },
+    { id: '1512917774080-9991f1c4c750', pos: [-13, 8, -16],  ry: 0.55, w: 10, h: 6.4 },
+    { id: '1600607687939-ce8a6c25118c', pos: [14, 7, -32],   ry: -0.6, w: 9,  h: 6 },
+    { id: '1600585154340-be6161a56a0c', pos: [-12, 10, -50], ry: 0.5,  w: 10, h: 6.4 },
+    { id: '1613490493576-7fde63acd811', pos: [12, 12, -66],  ry: -0.5, w: 9,  h: 6 },
+    { id: '1477959858617-67f85cf4f1df', pos: [-10, 12, -82], ry: 0.45, w: 11, h: 6 }
+  ],
+  cameraKeys: [
+    { p: 0.00, pos: [0, 30, 62],  look: [0, 6, -10] },
+    { p: 0.10, pos: [8, 13, 34],  look: [0, 8, -22] },
+    { p: 0.30, pos: [-15, 7, 4],  look: [6, 9, -40] },
+    { p: 0.50, pos: [11, 4, -10], look: [-6, 9, -54] },
+    { p: 0.70, pos: [-9, 15, -34],look: [4, 11, -74] },
+    { p: 0.85, pos: [0, 11, -40], look: [0, 9, -92] },
+    { p: 1.00, pos: [0, 17, -64], look: [0, 7, -112] }
+  ],
+  build(THREE, scene, ctx) {
+    // ----- warm window facade texture -----
+    function facade(lit) {
+      const cn = document.createElement('canvas'); cn.width = 256; cn.height = 512;
+      const c = cn.getContext('2d');
+      c.fillStyle = '#0c0d13'; c.fillRect(0, 0, 256, 512);
+      for (let y = 16; y < 500; y += 26) for (let x = 14; x < 244; x += 24) {
+        const on = Math.random() < lit;
+        c.fillStyle = on ? (Math.random() < 0.5 ? 'rgba(255,206,140,0.92)' : 'rgba(230,207,156,0.7)') : 'rgba(40,46,60,0.5)';
+        c.fillRect(x, y, 16, 18);
+      }
+      const t = new THREE.CanvasTexture(cn); t.anisotropy = 4; return t;
+    }
+    function building(w, h, d, x, z, lit, ry) {
+      const g = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({ color: 0x10131c, metalness: 0.65, roughness: 0.12 }));
+      body.position.y = h / 2;
+      const tex = facade(lit);
+      const skin = new THREE.Mesh(new THREE.BoxGeometry(w + 0.06, h - 0.4, d + 0.06),
+        new THREE.MeshStandardMaterial({ map: tex, emissive: 0xffcaa0, emissiveMap: tex, emissiveIntensity: 0.9, metalness: 0.3, roughness: 0.5, transparent: true, opacity: 0.96 }));
+      skin.position.y = h / 2;
+      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, d)),
+        new THREE.LineBasicMaterial({ color: 0xc9a96a, transparent: true, opacity: 0.5 }));
+      edges.position.y = h / 2;
+      g.add(body, skin, edges);
+      g.position.set(x, 0, z); g.rotation.y = ry || 0;
+      scene.add(g);
+      return g;
+    }
+    // luxury development cluster
+    building(9, 38, 9, 0, -88, 0.55, 0);          // hero tower
+    building(7, 22, 7, -16, -64, 0.45, 0.3);
+    building(8, 26, 8, 15, -70, 0.5, -0.2);
+    building(6, 14, 10, -10, -40, 0.4, 0.1);
+    building(10, 12, 7, 12, -44, 0.42, -0.1);
+    building(5, 18, 5, -2, -54, 0.5, 0.4);
+    building(6, 10, 12, 3, -26, 0.35, 0);
+    // distant skyline
+    for (let i = 0; i < 26; i++) {
+      const w = 3 + Math.random() * 4, h = 8 + Math.random() * 30;
+      building(w, h, w, (Math.random() - 0.5) * 120, -120 - Math.random() * 90, 0.3, Math.random());
+    }
+    // reflective pool deck accent strip
+    const strip = new THREE.Mesh(new THREE.PlaneGeometry(40, 4),
+      new THREE.MeshBasicMaterial({ color: 0xc9a96a, transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending }));
+    strip.rotation.x = -Math.PI / 2; strip.position.set(0, 0.03, -20); scene.add(strip);
+
+    // warm sun glow
+    const sun = ctx.glowSprite('rgba(255,210,150,0.9)', 70); sun.position.set(-30, 26, -120); scene.add(sun);
+
+    return {
+      update(t, now) {
+        sun.material.rotation = 0;
+        // subtle facade shimmer
+      }
+    };
+  }
+});
+</script>
+</body>
+</html>
