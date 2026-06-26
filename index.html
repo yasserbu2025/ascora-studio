@@ -514,28 +514,57 @@ body{font-family:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif;color:
   };
 
   app._siteTexture = function (idx) {
-    const accents = ['#4d7cff', '#7a5cff', '#ff7a59', '#23c08a', '#ffb23e'];
-    const titles = ['NEURA AI', 'ATLAS BUILD', 'SAISON', 'VANTAGE ESTATES', 'MERIDIAN'];
-    const ac = accents[idx % accents.length];
+    // Each floating screen renders one of the live demo concepts.
+    const sites = [
+      { brand: 'NEURA AI',   url: 'neura.ai',          ac: '#4d7cff', tag: 'Autonomous agents for the enterprise', img: '1558494949-ef010cbdcc31' },
+      { brand: 'ATLAS BUILD',url: 'atlasbuild.studio', ac: '#e8833a', tag: 'Engineering landmark structures',      img: '1503387762-592deb58ef4e' },
+      { brand: 'SAISON',     url: 'saison.studio',     ac: '#bf5a34', tag: 'Seasonal fine dining',                  img: '1414235077428-338989a2e8c0' },
+      { brand: 'VANTAGE',    url: 'vantageestates.com',ac: '#c9a96a', tag: 'Luxury residences, reimagined',         img: '1600596542815-ffad4c1539a9' },
+      { brand: 'MERIDIAN',   url: 'meridianhotels.com',ac: '#2f9e8f', tag: 'A premium stay, reimagined',            img: '1566073771259-6a8506099945' }
+    ];
+    const s = sites[idx % sites.length];
     const cn = document.createElement('canvas'); cn.width = 900; cn.height = 600;
     const c = cn.getContext('2d');
-    c.fillStyle = '#0c0e14'; c.fillRect(0, 0, 900, 600);
-    c.fillStyle = '#11141d'; c.fillRect(0, 0, 900, 54);
-    ['#ff5f57', '#febc2e', '#28c840'].forEach((col, i) => { c.fillStyle = col; c.beginPath(); c.arc(28 + i * 22, 27, 6, 0, 7); c.fill(); });
-    c.fillStyle = '#3a4055'; c.font = '600 16px monospace'; c.fillText(titles[idx % titles.length].toLowerCase() + '.studio', 120, 33);
-    const grd = c.createLinearGradient(40, 80, 860, 420); grd.addColorStop(0, ac); grd.addColorStop(1, '#0c0e14');
-    c.fillStyle = grd; c.fillRect(40, 80, 820, 300);
-    c.fillStyle = 'rgba(255,255,255,0.92)'; c.font = '700 56px Arial'; c.fillText(titles[idx % titles.length], 70, 230);
-    c.fillStyle = 'rgba(255,255,255,0.6)'; c.font = '400 20px Arial'; c.fillText('Premium digital experience', 70, 270);
-    c.fillStyle = ac; c.fillRect(70, 300, 150, 44); c.fillStyle = '#06070b'; c.font = '700 15px monospace'; c.fillText('EXPLORE', 100, 327);
-    for (let i = 0; i < 3; i++) {
-      c.fillStyle = '#13161f'; c.fillRect(40 + i * 276, 404, 256, 150);
-      c.fillStyle = ac; c.fillRect(60 + i * 276, 424, 40, 6);
-      c.fillStyle = '#2a3042';
-      c.fillRect(60 + i * 276, 444, 180, 8); c.fillRect(60 + i * 276, 462, 140, 8);
-      c.fillRect(60 + i * 276, 490, 210, 6); c.fillRect(60 + i * 276, 506, 170, 6);
-    }
-    const t = new THREE.CanvasTexture(cn); t.anisotropy = 4; return t;
+    const tex = new THREE.CanvasTexture(cn); tex.anisotropy = 4;
+
+    const draw = (img) => {
+      c.fillStyle = '#0b0d12'; c.fillRect(0, 0, 900, 600);
+      // browser chrome
+      c.fillStyle = '#11141d'; c.fillRect(0, 0, 900, 46);
+      ['#ff5f57', '#febc2e', '#28c840'].forEach((col, i) => { c.fillStyle = col; c.beginPath(); c.arc(26 + i * 20, 23, 5, 0, 7); c.fill(); });
+      c.fillStyle = '#5a6072'; c.font = '600 14px monospace'; c.fillText(s.url, 110, 28);
+      // hero
+      const hx = 28, hy = 62, hw = 844, hh = 324;
+      if (img) {
+        const ar = img.width / img.height, tar = hw / hh; let sw, sh, sx, sy;
+        if (ar > tar) { sh = img.height; sw = sh * tar; sx = (img.width - sw) / 2; sy = 0; }
+        else { sw = img.width; sh = sw / tar; sx = 0; sy = (img.height - sh) / 2; }
+        c.save(); c.beginPath(); c.rect(hx, hy, hw, hh); c.clip(); c.drawImage(img, sx, sy, sw, sh, hx, hy, hw, hh); c.restore();
+      } else { c.fillStyle = s.ac; c.fillRect(hx, hy, hw, hh); }
+      const g = c.createLinearGradient(0, hy, 0, hy + hh);
+      g.addColorStop(0, 'rgba(10,12,18,0.15)'); g.addColorStop(1, 'rgba(10,12,18,0.85)');
+      c.fillStyle = g; c.fillRect(hx, hy, hw, hh);
+      // brand + tagline + CTA
+      c.fillStyle = '#ffffff'; c.font = '700 58px Arial'; c.fillText(s.brand, 64, hy + hh - 104);
+      c.fillStyle = 'rgba(255,255,255,0.82)'; c.font = '400 22px Arial'; c.fillText(s.tag, 66, hy + hh - 66);
+      c.fillStyle = s.ac; c.fillRect(64, hy + hh - 52, 154, 40); c.fillStyle = '#0a0a0a'; c.font = '700 14px monospace'; c.fillText('EXPLORE', 96, hy + hh - 27);
+      // content cards
+      for (let i = 0; i < 3; i++) {
+        const cx = 28 + i * 286;
+        c.fillStyle = '#12151d'; c.fillRect(cx, 404, 268, 166);
+        c.fillStyle = s.ac; c.fillRect(cx + 18, 424, 42, 5);
+        c.fillStyle = '#2a3144';
+        c.fillRect(cx + 18, 446, 210, 7); c.fillRect(cx + 18, 462, 168, 7);
+        c.fillRect(cx + 18, 494, 232, 6); c.fillRect(cx + 18, 510, 190, 6); c.fillRect(cx + 18, 526, 210, 6);
+      }
+      tex.needsUpdate = true;
+    };
+
+    draw(null);
+    const im = new Image(); im.crossOrigin = 'anonymous';
+    im.onload = () => draw(im);
+    im.src = 'https://images.unsplash.com/photo-' + s.img + '?w=900&q=80&auto=format&fit=crop';
+    return tex;
   };
 
   app._buildScreens = function () {
