@@ -3,142 +3,279 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Neura AI — Cinematic Concept by Ascora Studio</title>
-<meta name="description" content="An immersive 3D AI-agency experience — a cinematic concept by Ascora Studio.">
+<title>Neura AI — The Operating System for Agentic AI | Concept by Ascora Studio</title>
+<meta name="description" content="Neura AI — autonomous agents that run real business processes. A website concept by Ascora Studio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/cinematic.css">
-<style>:root{--acc:#4d7cff;--acc-soft:#9fd0ff}</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://unpkg.com/three@0.128.0/examples/js/objects/Reflector.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{
+  --bg:#0a0b11; --bg2:#0e0f16; --panel:#13141c; --line:rgba(255,255,255,0.09);
+  --txt:#eef4f4; --mut:#9aa6ac; --mut2:#646b72; --acc:#16b3b3; --acc2:#3fd6d6;
+  --sans:'Space Grotesk',-apple-system,Helvetica,Arial,sans-serif; --mono:'Space Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--acc);color:#05060a}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.3em;color:var(--acc2);text-transform:uppercase}
+h1,h2,h3{font-weight:600;letter-spacing:-0.025em;line-height:1.04}
+.acc{color:var(--acc2)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:10px;font-family:var(--mono);font-size:12px;letter-spacing:0.1em;font-weight:700;transition:all .3s;cursor:pointer;border:none}
+.btn-solid{background:var(--acc);color:#04110f;box-shadow:0 10px 40px -12px var(--acc)}
+.btn-solid:hover{background:var(--acc2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--txt);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--acc)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);transition:all .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(10,11,17,0.82);backdrop-filter:blur(14px);border-color:var(--line);padding-top:13px;padding-bottom:13px}
+.nav .logo{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:0.02em;font-size:17px}
+.nav .logo .dot{width:11px;height:11px;border-radius:3px;background:var(--acc);box-shadow:0 0 14px var(--acc)}
+.nav .links{display:flex;align-items:center;gap:clamp(14px,2.2vw,32px);font-family:var(--mono);font-size:11px;letter-spacing:0.12em}
+.nav .links a{opacity:0.8;transition:opacity .25s,color .25s}.nav .links a:hover{opacity:1;color:var(--acc2)}
+.nav .back{color:var(--mut2)}
+@media(max-width:840px){.nav .links a.hidem{display:none}}
+
+.hero{position:relative;padding:clamp(140px,20vh,200px) 0 clamp(60px,9vh,110px);overflow:hidden}
+.hero .glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:min(1100px,120vw);height:760px;background:radial-gradient(circle,rgba(22,179,179,0.18),transparent 62%);z-index:0;pointer-events:none}
+.hero .gridbg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000,transparent 75%)}
+.hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(30px,5vw,64px);align-items:center}
+.hero .pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;color:var(--acc2);border:1px solid var(--line);border-radius:100px;padding:7px 14px;margin-bottom:24px}
+.hero .pill .d{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.4rem);max-width:16ch}
+.hero p{margin-top:22px;max-width:46ch;font-size:clamp(15px,1.4vw,17px);line-height:1.62;color:var(--mut)}
+.hero .cta{margin-top:32px;display:flex;gap:13px;flex-wrap:wrap}
+@media(max-width:880px){.hero .inner{grid-template-columns:1fr}.hero .mock{display:none}}
+
+/* agent console mock */
+.mock{background:linear-gradient(180deg,#10131b,#0c0e15);border:1px solid var(--line);border-radius:16px;box-shadow:0 40px 90px -30px rgba(0,0,0,0.8);overflow:hidden}
+.mock .bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.mock .bar i{width:9px;height:9px;border-radius:50%;background:#2a2f38}
+.mock .bar span{margin-left:8px;font-family:var(--mono);font-size:10px;color:var(--mut2)}
+.mock .body{padding:16px}
+.mock .line{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px}
+.mock .ic{width:24px;height:24px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:700}
+.mock .ic.a{background:rgba(22,179,179,0.16);color:var(--acc2)}
+.mock .ic.u{background:rgba(255,255,255,0.06);color:var(--mut)}
+.mock .msg{font-size:12.5px;line-height:1.5;color:var(--mut)}
+.mock .msg b{color:var(--txt)}
+.mock .step{font-family:var(--mono);font-size:10px;color:var(--acc2);background:rgba(22,179,179,0.08);border:1px solid rgba(22,179,179,0.2);border-radius:6px;padding:5px 9px;margin-bottom:7px;display:inline-block}
+.mock .typing{display:inline-flex;gap:3px}.mock .typing i{width:5px;height:5px;border-radius:50%;background:var(--acc2);animation:blink 1.2s infinite}
+.mock .typing i:nth-child(2){animation-delay:.2s}.mock .typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+.stripe{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.stripe .row{display:grid;grid-template-columns:repeat(4,1fr)}
+.stripe .s{padding:clamp(26px,3.6vw,42px) 18px;text-align:center;border-left:1px solid var(--line)}
+.stripe .s:first-child{border-left:none}
+.stripe .s b{font-size:clamp(1.8rem,3.4vw,2.7rem);display:block;line-height:1}
+.stripe .s span{font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--mut2);text-transform:uppercase}
+@media(max-width:680px){.stripe .row{grid-template-columns:repeat(2,1fr)}.stripe .s:nth-child(3){border-left:none}}
+
+.section{padding:clamp(66px,10vh,128px) 0}
+.head{max-width:62ch}.head h2{font-size:clamp(1.9rem,4.2vw,3.2rem);margin-top:14px}
+.head p{margin-top:18px;color:var(--mut);font-size:clamp(15px,1.3vw,17px);line-height:1.7;max-width:56ch}
+
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(38px,6vh,64px)}
+@media(max-width:880px){.agrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.agrid{grid-template-columns:1fr}}
+.acard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;transition:border-color .3s,transform .3s,background .3s}
+.acard:hover{border-color:rgba(22,179,179,0.45);transform:translateY(-4px);background:#16171f}
+.acard .ic{width:40px;height:40px;border-radius:10px;background:rgba(22,179,179,0.12);color:var(--acc2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.acard h3{font-size:1.2rem;margin-bottom:8px}
+.acard p{color:var(--mut);font-size:14px;line-height:1.6}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:clamp(38px,6vh,64px)}
+.split .img{border-radius:14px;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--line)}
+.split .img img{width:100%;height:100%;object-fit:cover}
+.split ul{list-style:none;margin-top:20px}
+.split li{display:flex;gap:12px;align-items:flex-start;margin-bottom:15px;font-size:15px;color:var(--mut);line-height:1.55}
+.split li svg{flex:none;margin-top:2px;color:var(--acc2)}
+.split li b{color:var(--txt);font-weight:600}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(38px,6vh,64px)}
+@media(max-width:820px){.price{grid-template-columns:1fr}}
+.tier{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column}
+.tier.feat{border-color:var(--acc);box-shadow:0 30px 70px -34px rgba(22,179,179,0.5)}
+.tier .name{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;color:var(--mut2);text-transform:uppercase}
+.tier .amt{font-size:2.4rem;font-weight:600;margin:14px 0 4px}.tier .amt small{font-size:0.9rem;color:var(--mut);font-weight:400}
+.tier .feats{list-style:none;margin:20px 0 26px;flex:1}
+.tier .feats li{font-size:13.5px;color:var(--mut);padding:8px 0;border-top:1px solid var(--line);display:flex;gap:9px}
+.tier .feats li svg{color:var(--acc2);flex:none}
+.tier .badge{align-self:flex-start;font-family:var(--mono);font-size:9px;letter-spacing:0.14em;color:var(--acc2);background:rgba(22,179,179,0.12);border:1px solid rgba(22,179,179,0.3);border-radius:100px;padding:4px 10px;margin-bottom:8px}
+
+.faq{margin-top:clamp(38px,6vh,60px);max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-size:1.05rem;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .x{color:var(--acc2);font-family:var(--mono);transition:transform .3s}
+.faq details[open] summary .x{transform:rotate(45deg)}
+.faq p{margin-top:13px;color:var(--mut);line-height:1.7;font-size:14.5px;max-width:70ch}
+
+.ctaband{position:relative;text-align:center;padding:clamp(80px,14vh,150px) 20px;overflow:hidden}
+.ctaband .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(22,179,179,0.16),transparent 60%);z-index:0}
+.ctaband .inner{position:relative;z-index:2}
+.ctaband h2{font-size:clamp(2rem,5vw,3.8rem);max-width:18ch;margin:14px auto 0}
+.ctaband p{max-width:46ch;margin:20px auto 0;color:var(--mut);line-height:1.6}
+.ctaband .btn{margin-top:30px}
+
+footer{border-top:1px solid var(--line);padding:clamp(40px,6vh,64px) 0 46px}
+.foot{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+.foot .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px}
+.foot .logo .dot{width:11px;height:11px;border-radius:3px;background:var(--acc)}
+.foot .tag{margin-top:13px;color:var(--mut2);font-size:13px;max-width:32ch;line-height:1.6}
+.foot .cols{display:flex;gap:clamp(28px,5vw,64px)}
+.foot h5{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--mut2);margin-bottom:13px}
+.foot a{display:block;color:var(--mut);font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--txt)}
+.foot-base{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:0.16em;color:var(--mut2)}
+.badge-fixed{position:fixed;bottom:18px;right:18px;z-index:60;font-family:var(--mono);font-size:9px;letter-spacing:0.16em;color:var(--mut);background:rgba(10,11,17,0.7);backdrop-filter:blur(8px);border:1px solid var(--line);padding:9px 13px;border-radius:100px}
+.badge-fixed:hover{color:var(--acc2);border-color:var(--acc)}.badge-fixed b{color:var(--acc)}
+</style>
 </head>
 <body>
-<canvas id="gl"></canvas>
-<div class="cine-vignette"></div>
-<div class="cine-scan"></div>
+<nav class="nav" id="nav">
+  <a href="#top" class="logo"><span class="dot"></span>NEURA<span class="acc">.</span>AI</a>
+  <div class="links">
+    <a href="#agents" class="hidem">Agents</a>
+    <a href="#platform" class="hidem">Platform</a>
+    <a href="#pricing" class="hidem">Pricing</a>
+    <a href="/#asc-work" class="back">← Studio</a>
+    <a href="#contact" class="btn btn-solid" style="padding:10px 18px">Book a Demo</a>
+  </div>
+</nav>
 
-<header class="cine-nav">
-  <a class="brand" href="/#asc-work" data-magnet><span class="dia"></span><span>ASCORA</span></a>
-  <div class="right"><span class="ind">AI AGENCY · CONCEPT</span><a class="back" href="/#asc-work" data-magnet>← BACK TO STUDIO</a></div>
+<header class="hero" id="top">
+  <div class="glow"></div><div class="gridbg"></div>
+  <div class="wrap inner">
+    <div>
+      <span class="pill"><span class="d"></span>AGENTIC AI · ENTERPRISE-READY</span>
+      <h1>AI agents that run <span class="acc">real business processes.</span></h1>
+      <p>Neura is the operating system for agentic AI — build, evaluate, and deploy autonomous agents that work inside the systems you already run.</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-solid">Book a Demo →</a>
+        <a href="#agents" class="btn btn-ghost">Explore Agents</a>
+      </div>
+    </div>
+    <div class="mock">
+      <div class="bar"><i></i><i></i><i></i><span>neura · finance-agent</span></div>
+      <div class="body">
+        <div class="line"><div class="ic u">YOU</div><div class="msg">Reconcile last month's invoices and flag anything over budget.</div></div>
+        <div class="line"><div class="ic a">AI</div><div class="msg"><span class="step">▸ Pulling 412 invoices from ERP</span><br><span class="step">▸ Matching against POs</span><br><span class="step">▸ 3 anomalies detected</span><br><b>Done.</b> Reconciled 409/412. 3 invoices exceed budget — draft sent to finance for approval.</div></div>
+        <div class="line"><div class="ic a">AI</div><div class="msg"><span class="typing"><i></i><i></i><i></i></span></div></div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<div class="cine-pre"><div class="mark"><span class="d"></span><span>NEURA AI</span></div><div class="bar"><i></i></div><div class="lbl">RENDERING EXPERIENCE</div></div>
-<div class="cine-cursor"></div>
+<section class="stripe">
+  <div class="wrap"><div class="row">
+    <div class="s"><b>50M+</b><span>Actions / day</span></div>
+    <div class="s"><b>&lt;40ms</b><span>Median latency</span></div>
+    <div class="s"><b>99.99%</b><span>Uptime SLA</span></div>
+    <div class="s"><b>24/7</b><span>Autonomy</span></div>
+  </div></div>
+</section>
 
-<div class="cine-hero">
-  <div class="eyebrow">A CINEMATIC CONCEPT BY ASCORA STUDIO</div>
-  <h1>Intelligence, <em>engineered.</em></h1>
-  <p>Neura AI — autonomous agents and applied intelligence that move your business from idea to deployment, faster than you thought possible.</p>
-</div>
-<div class="cine-cue"><span>SCROLL</span><div class="line"></div></div>
-
-<div class="cine-float" data-from="0.18" data-to="0.62" style="top:24%;left:7%"><div class="glass"><div class="t">99.99%</div><div class="d">UPTIME SLA</div></div></div>
-<div class="cine-float" data-from="0.42" data-to="0.9" style="bottom:20%;right:8%"><div class="glass"><div class="t">SOC 2</div><div class="d">TYPE II CERTIFIED</div></div></div>
-
-<main class="cine-scroll">
-  <div class="cine-spacer"></div>
-  <section class="cine-section">
-    <div class="glass">
-      <div class="kicker">01 — The Platform</div>
-      <h2>From prototype to <em>production.</em></h2>
-      <p>A unified platform for building, evaluating, and deploying AI agents — with the observability and guardrails enterprises actually need.</p>
-      <div class="stats"><div class="s"><b>&lt;40ms</b><span>Latency</span></div><div class="s"><b>50M+</b><span>Calls / day</span></div><div class="s"><b>24/7</b><span>Autonomy</span></div></div>
+<section class="section" id="agents">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Specialized Agents</div>
+      <h2>A specialized agent for <span class="acc">every department.</span></h2>
+      <p>Orchestrated on one platform, with shared memory, tools, and guardrails — so every team gets an expert that never sleeps.</p>
     </div>
-  </section>
-  <section class="cine-section right">
-    <div class="glass">
-      <div class="kicker">02 — Capabilities</div>
-      <h2>Agents that <em>get things done.</em></h2>
-      <p>Retrieval, tool-use, and multi-step reasoning, fine-tuned to your domain and wired into the systems you already run.</p>
-      <div class="row"><span class="chip">Autonomous Agents</span><span class="chip">RAG</span><span class="chip">Fine-tuning</span><span class="chip">Evals</span></div>
+    <div class="agrid">
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Sales Agent</h3><p>Qualifies leads, drafts outreach, and updates the CRM autonomously.</p></div>
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Support Agent</h3><p>Resolves tickets across channels with full context and escalation.</p></div>
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 1v22M5 5h11a3 3 0 010 6H8a3 3 0 000 6h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Finance Agent</h3><p>Reconciles invoices, flags anomalies, and prepares reports.</p></div>
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M19 12a7 7 0 11-7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Operations Agent</h3><p>Monitors pipelines, triggers workflows, and keeps SLAs on track.</p></div>
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21v-2a4 4 0 00-8 0v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>People Agent</h3><p>Screens applicants, schedules interviews, and onboards new hires.</p></div>
+      <div class="acard reveal"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div><h3>Security Agent</h3><p>Watches for threats, audits access, and responds in real time.</p></div>
     </div>
-  </section>
-  <section class="cine-section">
-    <div class="glass">
-      <div class="kicker">03 — Security</div>
-      <h2>Enterprise-grade <em>by default.</em></h2>
-      <p>Private deployments, full audit trails, and data that never leaves your boundary. Built for teams who can't compromise on trust.</p>
-      <div class="row"><span class="chip">Private Cloud</span><span class="chip">Audit Trails</span><span class="chip">Zero Retention</span></div>
-    </div>
-  </section>
-  <section class="cine-final">
-    <h2>Deploy <em>intelligence.</em></h2>
-    <p>Book a technical walkthrough and see your first agent live in days, not months.</p>
-    <a class="cine-btn" href="/#asc-work" data-magnet>BOOK A DEMO →</a>
-  </section>
-  <footer class="cine-foot"><span>NEURA AI — CONCEPT</span><a href="/#asc-work" data-magnet>DESIGNED BY ASCORA STUDIO →</a></footer>
-</main>
+  </div>
+</section>
 
-<script src="assets/cinematic.js"></script>
+<section class="section" id="platform" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="split">
+      <div class="img reveal"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1100&q=80&auto=format&fit=crop" alt="Secure infrastructure"></div>
+      <div class="reveal">
+        <div class="eyebrow">Digital Sovereignty</div>
+        <h2 style="font-size:clamp(1.8rem,3.8vw,2.8rem);margin-top:14px">Digital sovereignty. <span class="acc">No compromises.</span></h2>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span><b>Private deployment.</b> Run in your own cloud or on-prem — data never leaves your boundary.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span><b>GDPR & SOC 2.</b> EU-hosted, audited, and compliant by default.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span><b>Full observability.</b> Every action logged, traceable, and reversible.</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span><b>Zero data retention.</b> Your prompts and outputs are never used for training.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Pricing</div>
+      <h2>Transparent. Fair. <span class="acc">Scalable.</span></h2>
+      <p>Start with a single agent and scale to an autonomous workforce. No hidden fees, no lock-in.</p>
+    </div>
+    <div class="price">
+      <div class="tier reveal"><div class="name">Starter</div><div class="amt">€990<small>/mo</small></div><ul class="feats"><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>1 production agent</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Up to 50k actions/mo</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Standard integrations</li></ul><a href="#contact" class="btn btn-ghost" style="justify-content:center">Get Started</a></div>
+      <div class="tier feat reveal"><div class="badge">MOST POPULAR</div><div class="name">Scale</div><div class="amt">€3,900<small>/mo</small></div><ul class="feats"><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Up to 10 agents</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>1M actions/mo</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Private cloud + SSO</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Priority support</li></ul><a href="#contact" class="btn btn-solid" style="justify-content:center">Start Scaling</a></div>
+      <div class="tier reveal"><div class="name">Enterprise</div><div class="amt">Custom</div><ul class="feats"><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Unlimited agents</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>On-prem deployment</li><li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>Dedicated success team</li></ul><a href="#contact" class="btn btn-ghost" style="justify-content:center">Talk to Sales</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--bg2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">FAQ</div><h2>Frequently asked <span class="acc">questions.</span></h2></div>
+    <div class="faq reveal">
+      <details open><summary>What exactly is Neura Agentic AI?<span class="x">+</span></summary><p>A platform to build and run autonomous AI agents that complete multi-step business tasks — not just chat, but real work across your tools and data.</p></details>
+      <details><summary>Is Neura GDPR-compliant?<span class="x">+</span></summary><p>Yes. Neura is EU-hosted, SOC 2 Type II certified, and supports private and on-prem deployments so your data never leaves your boundary.</p></details>
+      <details><summary>How fast can we go live?<span class="x">+</span></summary><p>Most teams ship their first production agent within 30 days, including integration and evaluation.</p></details>
+      <details><summary>Which integrations are supported?<span class="x">+</span></summary><p>Out of the box: Salesforce, HubSpot, SAP, Slack, Jira, Microsoft 365, and any REST/GraphQL API via our connector framework.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband" id="contact">
+  <div class="glow"></div>
+  <div class="inner reveal">
+    <div class="eyebrow">Get Started</div>
+    <h2>Deploy your first agent in <span class="acc">30 days.</span></h2>
+    <p>Book a technical walkthrough and see an agent working inside your stack — live.</p>
+    <a href="/#asc-work" class="btn btn-solid">Book a Demo →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo"><span class="dot"></span>NEURA<span class="acc">.</span>AI</div>
+        <p class="tag">The operating system for agentic AI in the enterprise.</p>
+      </div>
+      <div class="cols">
+        <div><h5>PRODUCT</h5><a href="#agents">Agents</a><a href="#platform">Platform</a><a href="#pricing">Pricing</a></div>
+        <div><h5>COMPANY</h5><a href="/#asc-work">Book a Demo</a><a href="/#asc-work">Security</a><a href="/#asc-work">Contact</a></div>
+      </div>
+    </div>
+    <div class="foot-base"><span>NEURA AI — WEBSITE CONCEPT</span><span>DESIGNED BY ASCORA STUDIO</span></div>
+  </div>
+</footer>
+
+<a class="badge-fixed" href="/#asc-work">◆ CONCEPT BY <b>ASCORA</b></a>
+
 <script>
-Cinematic.init({
-  bg: 0x05060c, accentHex: 0x4d7cff, dust: '#9fd0ff',
-  fog: { color: 0x05070e, density: 0.016 },
-  ambient: 0.35, keyColor: 0xbcd0ff, keyInt: 0.6, rimInt: 1.0, fillInt: 0.9,
-  floor: { y: 0, color: 0x06080f },
-  photos: [
-    { id: '1558494949-ef010cbdcc31', pos: [6, 5, -6],    ry: -0.6, w: 9,   h: 5.6 },
-    { id: '1451187580459-43490279c0fa', pos: [-6, 5.5, -20], ry: 0.6,  w: 9,   h: 5.6 },
-    { id: '1518770660439-4636190af475', pos: [6, 6, -34],   ry: -0.6, w: 8.5, h: 5.4 },
-    { id: '1526374965328-7f61d4dc18c5', pos: [-6, 7, -48],  ry: 0.5,  w: 9,   h: 5.6 },
-    { id: '1488229297570-58520851e868', pos: [6, 8, -62],   ry: -0.5, w: 8.5, h: 5.4 },
-    { id: '1504384308090-c894fdcc538d', pos: [-5, 9, -74],  ry: 0.45, w: 9,   h: 5.4 }
-  ],
-  cameraKeys: [
-    { p: 0.00, pos: [0, 8, 40],   look: [0, 5, -10] },
-    { p: 0.12, pos: [2, 3.5, 22], look: [-1, 5, -20] },
-    { p: 0.34, pos: [-3, 4.5, 4], look: [2, 6, -34] },
-    { p: 0.55, pos: [3, 5.5, -16],look: [-2, 7, -52] },
-    { p: 0.74, pos: [-2, 8, -36], look: [1, 9, -70] },
-    { p: 0.88, pos: [0, 9, -54],  look: [0, 9, -82] },
-    { p: 1.00, pos: [0, 12, -74], look: [0, 9, -104] }
-  ],
-  build(THREE, scene, ctx) {
-    // tech grid floor
-    const grid = new THREE.GridHelper(300, 90, 0x1d3b7a, 0x0e1f44); grid.position.y = 0.02; grid.material.transparent = true; grid.material.opacity = 0.5; scene.add(grid);
-    // ---- server monoliths forming a corridor ----
-    function server(x, z, face) {
-      const g = new THREE.Group();
-      const body = new THREE.Mesh(new THREE.BoxGeometry(3, 16, 3), new THREE.MeshStandardMaterial({ color: 0x0a0e1a, metalness: 0.85, roughness: 0.28 }));
-      body.position.y = 8; g.add(body);
-      for (let i = 0; i < 6; i++) {
-        const strip = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 0.28), new THREE.MeshBasicMaterial({ color: Math.random() < 0.5 ? 0x4d7cff : 0x22d3ee, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending }));
-        strip.position.set(face * 1.55, 2 + i * 2.4, 0); strip.rotation.y = face * Math.PI / 2; g.add(strip);
-      }
-      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3, 16, 3)), new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.4 }));
-      edges.position.y = 8; g.add(edges);
-      g.position.set(x, 0, z); scene.add(g);
-    }
-    for (let i = 0; i < 7; i++) { const z = -8 - i * 8; server(10, z, -1); server(-10, z, 1); }
-    // ---- floating neural network ----
-    const cloud = new THREE.Group(); const center = new THREE.Vector3(0, 9, -86); cloud.position.copy(center); scene.add(cloud);
-    const pts = [], nodeMeshes = [];
-    const nodeGeo = new THREE.SphereGeometry(0.26, 12, 12);
-    for (let i = 0; i < 48; i++) {
-      const p = new THREE.Vector3((Math.random() - 0.5) * 24, (Math.random() - 0.5) * 16, (Math.random() - 0.5) * 22);
-      pts.push(p);
-      const col = Math.random() < 0.5 ? 0x4d7cff : 0x22d3ee;
-      const m = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: col })); m.position.copy(p); cloud.add(m); nodeMeshes.push(m);
-      const gl = ctx.glowSprite(col === 0x4d7cff ? 'rgba(77,124,255,0.9)' : 'rgba(34,211,238,0.9)', 2.2); gl.position.copy(p); cloud.add(gl);
-    }
-    // connections
-    const linePos = [];
-    for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-      if (pts[i].distanceTo(pts[j]) < 7 && Math.random() < 0.5) { linePos.push(pts[i].x, pts[i].y, pts[i].z, pts[j].x, pts[j].y, pts[j].z); }
-    }
-    const lgeo = new THREE.BufferGeometry(); lgeo.setAttribute('position', new THREE.Float32BufferAttribute(linePos, 3));
-    const lines = new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({ color: 0x4d7cff, transparent: true, opacity: 0.22, blending: THREE.AdditiveBlending })); cloud.add(lines);
-    const coreGlow = ctx.glowSprite('rgba(77,124,255,0.5)', 40); coreGlow.position.copy(center); scene.add(coreGlow);
-    return {
-      update(t, now) {
-        cloud.rotation.y += 0.0016; cloud.rotation.x = Math.sin(now * 0.2) * 0.08;
-        for (let i = 0; i < nodeMeshes.length; i++) { const s = 0.7 + Math.abs(Math.sin(now * 1.5 + i)) * 0.8; nodeMeshes[i].scale.setScalar(s); }
-      }
-    };
-  }
-});
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.15});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.07+'s';io.observe(el);});
 </script>
 </body>
 </html>
