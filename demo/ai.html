@@ -288,6 +288,22 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
 (function(){var m=document.querySelector('.mock');if(!m)return;var t0=performance.now(),hov=false;
   m.addEventListener('mouseenter',()=>hov=true);m.addEventListener('mouseleave',()=>hov=false);
   function f(now){var s=(now-t0)/1000;if(!hov)m.style.transform='perspective(1100px) rotateY('+(Math.sin(s*0.5)*3)+'deg) rotateX('+(Math.cos(s*0.4)*1.6)+'deg)';requestAnimationFrame(f);}requestAnimationFrame(f);})();
+/* scroll parallax — images drift within their frames */
+(function(){
+  if(!matchMedia('(min-width:760px)').matches) return;
+  const imgs=[...document.querySelectorAll('.split .img img')];
+  if(!imgs.length) return;
+  imgs.forEach(im=>{ im.style.transition='none'; im.style.willChange='transform'; });
+  const cl=v=>Math.max(-6,Math.min(6,v));
+  let tick=false;
+  function up(){ tick=false; const vh=innerHeight;
+    for(const im of imgs){ const r=im.parentElement.getBoundingClientRect();
+      if(r.bottom<-80||r.top>vh+80) continue;
+      const cy=(r.top+r.height/2)/vh;
+      im.style.transform='translateY('+cl((cy-0.5)*12)+'%) scale(1.14)'; } }
+  addEventListener('scroll',()=>{ if(!tick){ tick=true; requestAnimationFrame(up); } },{passive:true});
+  addEventListener('resize',up,{passive:true}); up();
+})();
 </script>
 </body>
 </html>

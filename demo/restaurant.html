@@ -147,6 +147,22 @@ if(matchMedia('(hover:hover) and (pointer:fine)').matches){
     el.addEventListener('mouseleave',()=>el.style.transform='perspective(1100px) rotateY(0deg) rotateX(0deg) scale(1)');};
   document.querySelectorAll('.dish, .split .img, .gal a').forEach(el=>tilt(el,8));
 }
+/* scroll parallax — images drift within their frames */
+(function(){
+  if(!matchMedia('(min-width:760px)').matches) return;
+  const imgs=[...document.querySelectorAll('.split .img img, .dish .ph img, .gal a img')];
+  if(!imgs.length) return;
+  imgs.forEach(im=>{ im.style.transition='none'; im.style.willChange='transform'; });
+  const cl=v=>Math.max(-6,Math.min(6,v));
+  let tick=false;
+  function up(){ tick=false; const vh=innerHeight;
+    for(const im of imgs){ const r=im.parentElement.getBoundingClientRect();
+      if(r.bottom<-80||r.top>vh+80) continue;
+      const cy=(r.top+r.height/2)/vh;
+      im.style.transform='translateY('+cl((cy-0.5)*12)+'%) scale(1.14)'; } }
+  addEventListener('scroll',()=>{ if(!tick){ tick=true; requestAnimationFrame(up); } },{passive:true});
+  addEventListener('resize',up,{passive:true}); up();
+})();
 </script>
 </body>
 </html>
