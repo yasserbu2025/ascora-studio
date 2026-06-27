@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200, initial-scale=1">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#06070b;color:#f3f4f7;font-family:'Space Grotesk',sans-serif;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 84px}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 30% 40%,#000,transparent 80%)}
+.glow{position:absolute;top:-20%;right:-10%;width:780px;height:780px;background:radial-gradient(circle,rgba(77,124,255,0.22),transparent 60%)}
+.inner{position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.brand .dia{width:22px;height:22px;border:2.4px solid #fff;transform:rotate(45deg)}
+.brand span{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:0.34em;font-size:22px}
+h1{font-weight:500;font-size:84px;line-height:1.0;letter-spacing:-0.03em;max-width:18ch}
+h1 em{font-style:italic;font-weight:400;color:#9fb6ff}
+p{margin-top:30px;font-family:'Space Mono',monospace;font-size:18px;letter-spacing:0.28em;color:#7e93c9;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="grid"></div><div class="glow"></div>
+<div class="inner">
+  <div class="brand"><span class="dia"></span><span>ASCORA STUDIO</span></div>
+  <h1>Websites That Businesses <em>Remember.</em></h1>
+  <p>Premium Websites &amp; Digital Experiences</p>
+</div>
+</body>
+</html>
