@@ -891,12 +891,24 @@ document.querySelectorAll('a[href^="#asc-"]').forEach(a => {
   });
 });
 
-// "View our work" → cinematic glide through the 3D scenes to the Showcase,
-// so visitors experience the scroll-snapped scenes instead of skipping them.
+// "View our work" → one continuous cinematic glide that flies through ALL the
+// scroll-snapped 3D scenes (hero → city → showcase → final) and lands on the
+// live-concept demo cards, so visitors experience the scenes, not skip them.
 const viewWork = document.getElementById('asc-viewwork');
 if (viewWork) viewWork.addEventListener('click', () => {
-  if (window.ascGoScene) window.ascGoScene(2, 3200);
-  else document.getElementById('asc-work')?.scrollIntoView({ behavior: 'smooth' });
+  const target = document.getElementById('asc-work');
+  if (!target) return;
+  const startY = window.scrollY || 0;
+  const endY = target.getBoundingClientRect().top + window.scrollY;
+  if (Math.abs(endY - startY) < 4) return;
+  const dur = 4800, t0 = performance.now();
+  const ease = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const step = now => {
+    const p = Math.min(1, (now - t0) / dur);
+    window.scrollTo(0, startY + (endY - startY) * ease(p));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
 });
 
 form.addEventListener('submit', async (e) => {
